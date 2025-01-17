@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Factura", "Factura\Factura.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Formulario Pago", "Formulario Pago\Formulario Pago.csproj", "{BA9C9779-9AAF-426D-8C2F-4EAF7EC6DEB0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amortizacion", "Amortizacion\Amortizacion.csproj", "{15DD8911-5ED0-4026-A588-CFBB528E7316}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{BA9C9779-9AAF-426D-8C2F-4EAF7EC6DEB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA9C9779-9AAF-426D-8C2F-4EAF7EC6DEB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA9C9779-9AAF-426D-8C2F-4EAF7EC6DEB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15DD8911-5ED0-4026-A588-CFBB528E7316}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15DD8911-5ED0-4026-A588-CFBB528E7316}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15DD8911-5ED0-4026-A588-CFBB528E7316}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15DD8911-5ED0-4026-A588-CFBB528E7316}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +54,7 @@ Global
 		{1C18DE88-B7FE-4C62-9F62-854A1C1B37BF} = {F72A4841-B4B6-4E72-BAD1-AED8FCC0F676}
 		{93FEB069-527E-4C3A-BCC2-23FFC64C1A50} = {F72A4841-B4B6-4E72-BAD1-AED8FCC0F676}
 		{BA9C9779-9AAF-426D-8C2F-4EAF7EC6DEB0} = {F72A4841-B4B6-4E72-BAD1-AED8FCC0F676}
+		{15DD8911-5ED0-4026-A588-CFBB528E7316} = {F72A4841-B4B6-4E72-BAD1-AED8FCC0F676}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E9238FC0-9D1C-4ABC-AC1F-B7437D9691D7}
