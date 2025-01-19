@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Registro
+namespace Login
 {
-    public partial class Form1 : Form
+    public partial class FromRegistro : Form
     {
-        public Form1()
+        public FromRegistro()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
