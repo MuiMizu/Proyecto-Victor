@@ -7,14 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Registro;
+using Login;
 
-namespace Login
+namespace Registro
 {
-    public partial class FromRegistro : Form
+    public partial class FormRegistro : Form
     {
-        public FromRegistro()
+        public FormRegistro()
         {
-            InitializeComponent();
+           
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -23,3 +25,4 @@ namespace Login
         }
     }
 }
+

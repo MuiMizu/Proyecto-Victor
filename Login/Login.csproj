@@ -97,5 +97,11 @@
   <ItemGroup>
     <None Include="Resources\bb3.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Registro\Registro.csproj">
+      <Project>{eceb8232-7b16-4633-a542-1a69aa9b4373}</Project>
+      <Name>Registro</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
