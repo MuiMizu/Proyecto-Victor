@@ -7,8 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Registro;
-using Login;
+
 
 namespace Registro
 {
@@ -16,12 +15,17 @@ namespace Registro
     {
         public FormRegistro()
         {
-           
+           InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

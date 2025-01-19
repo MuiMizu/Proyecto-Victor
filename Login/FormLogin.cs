@@ -20,8 +20,7 @@ namespace Login
         private void button3_Click(object sender, EventArgs e)
         {
             Registro.FormRegistro formRegistro = new Registro.FormRegistro();
-            formRegistro.Show();
-            this.Hide();
+            formRegistro.ShowDialog();
         }
     }
 }
