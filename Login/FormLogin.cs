@@ -25,12 +25,14 @@ namespace Login
             formRegistro.ShowDialog();
         }
 
+        ClienteBLL clienteBLL = new ClienteBLL();
         private void button2_Click(object sender, EventArgs e)
         {
             string nombreCompleto = textBox1.Text;
             string contraseña = textBox2.Text;
 
-            bool esValido = ClassLibrary1.ValidarCredenciales(nombreCompleto, contraseña);
+
+            bool esValido = clienteBLL.ValidarCredenciales(nombreCompleto, contraseña);
 
             if (esValido)
             {

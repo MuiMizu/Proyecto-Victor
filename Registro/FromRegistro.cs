@@ -32,8 +32,8 @@ namespace Registro
                 Cliente cliente = new Cliente
                 {
                     NombreCompleto = textBox1.Text,
-                    Correo = textBox2.Text,
-                    Contraseña = textBox3.Text
+                    Correo = textBox3.Text,
+                    Contraseña = textBox2.Text
                 };
 
                 bool resultado = clienteBLL.RegistrarCliente(cliente);
