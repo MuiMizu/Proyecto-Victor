@@ -2,7 +2,9 @@
 using System;
 using System.Windows.Forms;
 using Registro;
-
+using ClassLibrary1;
+using ClassLibrary2;
+using Menu;
 namespace Login
 {
     public partial class FormLogin : Form
@@ -21,6 +23,27 @@ namespace Login
         {
             Registro.FormRegistro formRegistro = new Registro.FormRegistro();
             formRegistro.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string nombreCompleto = textBox1.Text;
+            string contraseña = textBox2.Text;
+
+            bool esValido = ClassLibrary1.ValidarCredenciales(nombreCompleto, contraseña);
+
+            if (esValido)
+            {
+                MessageBox.Show("Inicio de sesión exitoso.");
+
+                Form1 formPrincipal = new Form1();
+                formPrincipal.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Credenciales incorrectas. Inténtalo nuevamente.");
+            }
         }
     }
 }
