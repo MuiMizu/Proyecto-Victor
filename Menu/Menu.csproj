@@ -196,6 +196,20 @@
   <ItemGroup>
     <None Include="Resources\menu-regular-24.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Amortizacion\Amortizacion.csproj">
+      <Project>{15dd8911-5ed0-4026-a588-cfbb528e7316}</Project>
+      <Name>Amortizacion</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Factura\Factura.csproj">
+      <Project>{93feb069-527e-4c3a-bcc2-23ffc64c1a50}</Project>
+      <Name>Factura</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Formulario Pago\Formulario Pago.csproj">
+      <Project>{ba9c9779-9aaf-426d-8c2f-4eaf7ec6deb0}</Project>
+      <Name>Formulario Pago</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.5.2.0\build\net462\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.5.2.0\build\net462\Microsoft.Data.SqlClient.SNI.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
