@@ -34,9 +34,9 @@ namespace ClassLibrary1
                 throw new ArgumentException("Todos los campos son obligatorios.");
             }
 
-            return clienteDAL.RegistrarCliente(cliente);
+            return clienteDAL.RegistrarDatos(cliente);
         }
-
+          
         public bool IniciarSesion(string correo, string contraseña)
         {
             int clienteId = clienteDAL.ValidarCredenciales(correo, contraseña);
