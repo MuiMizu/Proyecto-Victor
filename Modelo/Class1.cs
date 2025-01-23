@@ -38,6 +38,36 @@ namespace Modelo
                 return false;
             }
         }
+
+        public bool RegistrarDatos(Cliente cliente)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string query = "UPDATE Clientes " +
+                                   "SET Telefono = @Telefono, Direccion = @Direccion, Garantia = @Garantia, Sueldo = @Sueldo " +
+                                   "WHERE ClienteID = @ClienteID";
+                    SqlCommand command = new SqlCommand(query, connection);
+
+ 
+                    command.Parameters.AddWithValue("@Telefono", cliente.Telefono);
+                    command.Parameters.AddWithValue("@Direccion", cliente.Direccion);
+                    command.Parameters.AddWithValue("@Garantia", cliente.Garantia);
+                    command.Parameters.AddWithValue("@Sueldo", cliente.Sueldo);
+                    command.Parameters.AddWithValue("@ClienteID", Sesion.ClienteId);
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    return true; 
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false; 
+            }
+        }
         public int ValidarCredenciales(string correo, string contraseña)
         {
             try
