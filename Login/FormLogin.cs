@@ -26,25 +26,29 @@ namespace Login
         }
 
         ClienteBLL clienteBLL = new ClienteBLL();
+        Cliente cliente = new Cliente();
         private void button2_Click(object sender, EventArgs e)
         {
-            string nombreCompleto = textBox1.Text;
+            string correo = textBox1.Text;
             string contraseña = textBox2.Text;
 
-
-            bool esValido = clienteBLL.ValidarCredenciales(nombreCompleto, contraseña);
-
-            if (esValido)
+            if (string.IsNullOrWhiteSpace(correo) || string.IsNullOrWhiteSpace(contraseña))
             {
-                MessageBox.Show("Inicio de sesión exitoso.");
+                MessageBox.Show("Por favor, ingresa el correo y la contraseña.");
+                return;
+            }
 
-                Form1 formPrincipal = new Form1();
+            if (clienteBLL.IniciarSesion(correo, contraseña))
+            {
+                MessageBox.Show($"Bienvenido, {Sesion.NombreCompleto}!");
+                Sesion.Correo = correo;
+                Menu.Form1 formPrincipal = new Menu.Form1();
                 formPrincipal.Show();
                 this.Hide();
             }
             else
             {
-                MessageBox.Show("Credenciales incorrectas. Inténtalo nuevamente.");
+                MessageBox.Show("Credenciales inválidas. Inténtalo de nuevo.");
             }
         }
     }

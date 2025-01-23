@@ -29,12 +29,14 @@ namespace Registro
         {
             try
             {
-                Cliente cliente = new Cliente
-                {
-                    NombreCompleto = textBox1.Text,
-                    Correo = textBox3.Text,
-                    Contraseña = textBox2.Text
-                };
+
+                Cliente cliente = new Cliente();
+                cliente.Contraseña = textBox2.Text;
+
+                Sesion.NombreCompleto = textBox1.Text;
+                Sesion.Correo = textBox3.Text;
+
+
 
                 bool resultado = clienteBLL.RegistrarCliente(cliente);
 

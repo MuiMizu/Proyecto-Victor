@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ClassLibrary2;
+using static System.Collections.Specialized.BitVector32;
 
 namespace Modelo
 {
@@ -22,8 +23,8 @@ namespace Modelo
                                    "VALUES (@NombreCompleto, @Correo, @Contraseña)";
                     SqlCommand command = new SqlCommand(query, connection);
 
-                    command.Parameters.AddWithValue("@NombreCompleto", cliente.NombreCompleto);
-                    command.Parameters.AddWithValue("@Correo", cliente.Correo);
+                    command.Parameters.AddWithValue("@NombreCompleto", Sesion.NombreCompleto);
+                    command.Parameters.AddWithValue("@Correo", Sesion.Correo);
                     command.Parameters.AddWithValue("@Contraseña",cliente.Contraseña);
 
                     connection.Open();
@@ -37,27 +38,36 @@ namespace Modelo
                 return false;
             }
         }
-        public bool ValidarCredenciales(string nombreCompleto, string contraseña)
+        public int ValidarCredenciales(string correo, string contraseña)
         {
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    string query = "SELECT COUNT(*) FROM Clientes WHERE NombreCompleto = @NombreCompleto AND Contraseña = @Contraseña";
+                    string query = "SELECT ClienteID, NombreCompleto FROM Clientes WHERE Correo = @Correo AND Contraseña = @Contraseña";
                     SqlCommand command = new SqlCommand(query, connection);
-
-                    command.Parameters.AddWithValue("@NombreCompleto", nombreCompleto);
-                    command.Parameters.AddWithValue("@Contraseña", contraseña);
+                    command.Parameters.AddWithValue("@Correo", correo);
+                    command.Parameters.AddWithValue("@Contraseña", contraseña); 
 
                     connection.Open();
-                    int count = (int)command.ExecuteScalar();
-                    return count > 0;
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        Sesion.ClienteId = (int)reader["ClienteID"];
+                        Sesion.NombreCompleto = reader["NombreCompleto"].ToString();
+                        return Sesion.ClienteId;
+                    }
+                    else
+                    {
+                        return -1; 
+                    }
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return false;
+                return -1;
             }
         }
 

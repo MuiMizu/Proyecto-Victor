@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ClassLibrary2;
+using static System.Collections.Specialized.BitVector32;
 
 namespace Factura
 {
@@ -17,14 +19,11 @@ namespace Factura
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        Cliente cliente = new Cliente();
+        private void Form1_Load(object sender, EventArgs e)
         {
-
-        }
-
-        private void groupBox3_Enter(object sender, EventArgs e)
-        {
-
+            textBox2.Text = Sesion.NombreCompleto.ToString();
+            textBox4.Text = Sesion.Correo.ToString();
         }
     }
 }

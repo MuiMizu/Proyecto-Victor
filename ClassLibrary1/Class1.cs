@@ -14,8 +14,8 @@ namespace ClassLibrary1
 
         public bool RegistrarCliente(Cliente cliente)
         {
-            if (string.IsNullOrEmpty(cliente.NombreCompleto) ||
-                string.IsNullOrEmpty(cliente.Correo) ||
+            if (string.IsNullOrEmpty(Sesion.NombreCompleto) ||
+                string.IsNullOrEmpty(Sesion.Correo) ||
                 string.IsNullOrEmpty(cliente.Contraseña))
             {
                 throw new ArgumentException("Todos los campos son obligatorios.");
@@ -24,9 +24,20 @@ namespace ClassLibrary1
             return clienteDAL.RegistrarCliente(cliente);
         }
 
-        public bool ValidarCredenciales(string nombreCompleto, string contraseña)
+        public bool IniciarSesion(string correo, string contraseña)
         {
-            return clienteDAL.ValidarCredenciales(nombreCompleto, contraseña);
+            int clienteId = clienteDAL.ValidarCredenciales(correo, contraseña);
+
+            if (clienteId > 0)
+            {
+             
+                return true;
+            }
+            else
+            {
+
+                return false;
+            }
         }
     }
 }
