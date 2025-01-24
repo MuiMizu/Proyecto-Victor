@@ -52,9 +52,7 @@
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.textBox10 = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.textBox8 = new System.Windows.Forms.TextBox();
@@ -247,9 +245,7 @@
             this.groupBox2.Controls.Add(this.textBox11);
             this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Controls.Add(this.dateTimePicker1);
             this.groupBox2.Controls.Add(this.textBox10);
-            this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.textBox9);
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.textBox8);
@@ -336,14 +332,6 @@
             this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(315, 139);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(265, 22);
-            this.dateTimePicker1.TabIndex = 9;
-            // 
             // textBox10
             // 
             this.textBox10.Location = new System.Drawing.Point(315, 58);
@@ -351,17 +339,6 @@
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(261, 22);
             this.textBox10.TabIndex = 5;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(311, 118);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(47, 20);
-            this.label12.TabIndex = 6;
-            this.label12.Text = "Fecha";
             // 
             // textBox9
             // 
@@ -501,8 +478,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button2;
