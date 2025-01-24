@@ -44,5 +44,10 @@ namespace Menu
         {
             AbrirForm(new Amortizacion.Form1());
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

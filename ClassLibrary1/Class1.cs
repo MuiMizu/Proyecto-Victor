@@ -8,10 +8,10 @@ using Modelo;
 
 namespace ClassLibrary1
 {
+
     public class ClienteBLL
     {
         private ClienteDAL clienteDAL = new ClienteDAL();
-
         public bool RegistrarCliente(Cliente cliente)
         {
             if (string.IsNullOrEmpty(Sesion.NombreCompleto) ||
@@ -51,6 +51,11 @@ namespace ClassLibrary1
 
                 return false;
             }
+        }
+
+        public decimal ObtenerFondoDisponible()
+        {
+            return clienteDAL.ObtenerFondoDisponible();
         }
     }
 }

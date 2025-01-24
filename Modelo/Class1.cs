@@ -101,6 +101,51 @@ namespace Modelo
             }
         }
 
+        public decimal ObtenerFondoDisponible()
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string query = "SELECT TOP 1 MontoDisponible FROM Fondo";
+                    SqlCommand command = new SqlCommand(query, connection);
+
+                    connection.Open();
+                    object resultado = command.ExecuteScalar();
+                    return resultado != null ? Convert.ToDecimal(resultado) : 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener el fondo disponible: " + ex.Message);
+                return 0;
+            }
+        }
+
+        public bool ActualizarFondoDisponible(decimal nuevoMonto)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string query = "UPDATE Fondo SET MontoDisponible = @MontoDisponible";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@MontoDisponible", nuevoMonto);
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al actualizar el fondo disponible: " + ex.Message);
+                return false;
+            }
+        }
+
+
+
     }
 
 }

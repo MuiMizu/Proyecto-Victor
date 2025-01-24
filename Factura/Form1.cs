@@ -21,10 +21,22 @@ namespace Factura
         }
 
         Cliente cliente = new Cliente();
+        private decimal fondoDisponible;
+
+        ClienteBLL clienteBLL = new ClienteBLL();
         private void Form1_Load(object sender, EventArgs e)
         {
             textBox2.Text = Sesion.NombreCompleto.ToString();
             textBox4.Text = Sesion.Correo.ToString();
+
+            try
+            {
+                fondoDisponible = clienteBLL.ObtenerFondoDisponible();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar el fondo disponible: " + ex.Message);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -39,7 +51,6 @@ namespace Factura
                 cliente.Garantia = textBox7.Text;
 
 
-                ClienteBLL clienteBLL = new ClienteBLL();
 
                 bool resultado = clienteBLL.RegistrarDatos(cliente);
 
@@ -55,6 +66,64 @@ namespace Factura
             catch (Exception ex)
             {
                 MessageBox.Show($"Error: {ex.Message}");
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (string.IsNullOrWhiteSpace(textBox6.Text) ||
+                    string.IsNullOrWhiteSpace(textBox8.Text) ||
+                    string.IsNullOrWhiteSpace(textBox7.Text) ||
+                    string.IsNullOrWhiteSpace(textBox10.Text))
+                {
+                    MessageBox.Show("Por favor, complete todos los campos necesarios.");
+                    return;
+                }
+
+                decimal sueldo = decimal.Parse(textBox6.Text);
+                decimal montoPrestamo = decimal.Parse(textBox8.Text);
+                int numeroCuotas = int.Parse(textBox10.Text);
+
+                if (montoPrestamo > sueldo * 4)
+                {
+                    MessageBox.Show("El monto solicitado no puede exceder 4 veces el sueldo.");
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(textBox7.Text))
+                {
+                    MessageBox.Show("Debe proporcionar una garantía para el préstamo.");
+                    return;
+                }
+
+                if (montoPrestamo > fondoDisponible)
+                {
+                    MessageBox.Show("El fondo disponible no es suficiente para este préstamo.");
+                    return;
+                }
+
+
+                Prestamo prestamo = new Prestamo
+                {
+                    Monto = montoPrestamo,
+                    PlazoMeses = numeroCuotas
+                };
+                prestamo.CalcularTotales();
+
+                textBox9.Text = prestamo.CalcularInteres(numeroCuotas).ToString();
+                textBox12.Text = prestamo.Interes.ToString("C");
+                textBox13.Text = prestamo.MontoTotal.ToString("C");
+                textBox11.Text = prestamo.MontoPorCuota.ToString("C");
+
+
+                MessageBox.Show("Préstamo calculado exitosamente.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error: " + ex.Message);
             }
         }
     }
