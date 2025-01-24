@@ -81,12 +81,12 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(485, 129);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(181, 28);
+            this.label3.Size = new System.Drawing.Size(87, 31);
             this.label3.TabIndex = 3;
-            this.label3.Text = "Nombre Completo:";
+            this.label3.Text = "Correo:";
             // 
             // textBox1
             // 
@@ -107,10 +107,10 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(485, 210);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(114, 28);
+            this.label4.Size = new System.Drawing.Size(134, 31);
             this.label4.TabIndex = 5;
             this.label4.Text = "Contraseña:";
             // 
