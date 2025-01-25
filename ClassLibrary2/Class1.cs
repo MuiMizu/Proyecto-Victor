@@ -32,6 +32,7 @@ namespace ClassLibrary2
         public int InteresPor { get; set; }
         public decimal MontoTotal { get; set; }
         public decimal MontoPorCuota { get; set; }
+        public string Estado { get; set; }
 
         public decimal CalcularInteres(int numeroCuotas)
         {

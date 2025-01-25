@@ -57,5 +57,10 @@ namespace ClassLibrary1
         {
             return clienteDAL.ObtenerFondoDisponible();
         }
+
+        public bool RegistrarPrestamo(Prestamo prestamo)
+        {
+            return clienteDAL.RegistrarPrestamo(prestamo);
+        }
     }
 }

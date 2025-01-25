@@ -144,6 +144,36 @@ namespace Modelo
             }
         }
 
+        Prestamo prestamo = new Prestamo();
+        public bool RegistrarPrestamo(Prestamo prestamo)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string query = "INSERT INTO Prestamos (ClienteID, Monto, PlazoEnMeses, InteresAplicado, MontoTotal, Estado) " +
+                                   "VALUES (@ClienteID, @Monto, @PlazoEnMeses, @InteresAplicado, @MontoTotal, @Estado)";
+                    SqlCommand command = new SqlCommand(query, connection);
+
+                    command.Parameters.AddWithValue("@ClienteID", Sesion.ClienteId);
+                    command.Parameters.AddWithValue("@Monto", prestamo.Monto);
+                    command.Parameters.AddWithValue("@PlazoEnMeses", prestamo.PlazoMeses);
+                    command.Parameters.AddWithValue("@InteresAplicado", prestamo.Interes);
+                    command.Parameters.AddWithValue("@MontoTotal", prestamo.MontoTotal);
+                    command.Parameters.AddWithValue("@Estado", prestamo.Estado);
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+
 
 
     }

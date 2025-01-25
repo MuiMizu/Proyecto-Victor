@@ -39,36 +39,8 @@ namespace Factura
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            try
-            {
 
-                Cliente cliente = new Cliente();
-                cliente.Sueldo = Convert.ToDecimal(textBox6.Text);
-                cliente.Direccion = textBox3.Text;
-                cliente.Telefono = textBox5.Text;
-                cliente.Garantia = textBox7.Text;
-
-
-
-                bool resultado = clienteBLL.RegistrarDatos(cliente);
-
-                if (resultado)
-                {
-                    MessageBox.Show("Datos registrados exitosamente.");
-                }
-                else
-                {
-                    MessageBox.Show("Error al registrar los datos.");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error: {ex.Message}");
-            }
-        }
-
+        Prestamo prestamo = new Prestamo();
         private void button1_Click(object sender, EventArgs e)
         {
             try
@@ -86,6 +58,7 @@ namespace Factura
                 decimal sueldo = decimal.Parse(textBox6.Text);
                 decimal montoPrestamo = decimal.Parse(textBox8.Text);
                 int numeroCuotas = int.Parse(textBox10.Text);
+                string Estado = "Pendiente";
 
                 if (montoPrestamo > sueldo * 4)
                 {
@@ -117,6 +90,7 @@ namespace Factura
                 textBox12.Text = prestamo.Interes.ToString("C");
                 textBox13.Text = prestamo.MontoTotal.ToString("C");
                 textBox11.Text = prestamo.MontoPorCuota.ToString("C");
+                Estado = prestamo.Estado;
 
 
                 MessageBox.Show("Préstamo calculado exitosamente.");
@@ -124,6 +98,35 @@ namespace Factura
             catch (Exception ex)
             {
                 MessageBox.Show("Ocurrió un error: " + ex.Message);
+            }
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                Cliente cliente = new Cliente();
+                cliente.Sueldo = Convert.ToDecimal(textBox6.Text);
+                cliente.Direccion = textBox3.Text;
+                cliente.Telefono = textBox5.Text;
+                cliente.Garantia = textBox7.Text;
+
+
+                bool resultado = clienteBLL.RegistrarDatos(cliente);
+                bool resultado2 = clienteBLL.RegistrarPrestamo(prestamo);
+
+                if (resultado && resultado2)
+                {
+                    MessageBox.Show("Datos registrados exitosamente.");
+                }
+                else
+                {
+                    MessageBox.Show("Error al registrar los datos.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
             }
         }
     }
