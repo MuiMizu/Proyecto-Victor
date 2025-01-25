@@ -144,7 +144,6 @@ namespace Modelo
             }
         }
 
-        Prestamo prestamo = new Prestamo();
         public bool RegistrarPrestamo(Prestamo prestamo)
         {
             try
@@ -173,8 +172,6 @@ namespace Modelo
                 return false;
             }
         }
-
-
 
     }
 

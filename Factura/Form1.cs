@@ -39,8 +39,8 @@ namespace Factura
             }
         }
 
-
         Prestamo prestamo = new Prestamo();
+
         private void button1_Click(object sender, EventArgs e)
         {
             try
@@ -58,7 +58,7 @@ namespace Factura
                 decimal sueldo = decimal.Parse(textBox6.Text);
                 decimal montoPrestamo = decimal.Parse(textBox8.Text);
                 int numeroCuotas = int.Parse(textBox10.Text);
-                string Estado = "Pendiente";
+                string Estado = "Activo";
 
                 if (montoPrestamo > sueldo * 4)
                 {
@@ -78,19 +78,17 @@ namespace Factura
                     return;
                 }
 
+ 
+                prestamo.Monto = montoPrestamo;
+                prestamo.PlazoMeses = numeroCuotas;
 
-                Prestamo prestamo = new Prestamo
-                {
-                    Monto = montoPrestamo,
-                    PlazoMeses = numeroCuotas
-                };
                 prestamo.CalcularTotales();
 
                 textBox9.Text = prestamo.CalcularInteres(numeroCuotas).ToString();
                 textBox12.Text = prestamo.Interes.ToString("C");
                 textBox13.Text = prestamo.MontoTotal.ToString("C");
                 textBox11.Text = prestamo.MontoPorCuota.ToString("C");
-                Estado = prestamo.Estado;
+                prestamo.Estado = Estado;
 
 
                 MessageBox.Show("Préstamo calculado exitosamente.");
@@ -123,6 +121,7 @@ namespace Factura
                 {
                     MessageBox.Show("Error al registrar los datos.");
                 }
+
             }
             catch (Exception ex)
             {
