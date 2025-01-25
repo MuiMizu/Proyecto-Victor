@@ -52,5 +52,31 @@ namespace ClassLibrary2
             this.MontoTotal = this.Monto + this.Interes;
             this.MontoPorCuota = this.MontoTotal / this.PlazoMeses;
         }
+        public List<Cuota> GenerarTablaCuotas(decimal montoTotal, int plazoMeses, decimal montoPorCuota, decimal interes)
+        {
+            List<Cuota> cuotas = new List<Cuota>();
+
+            decimal interesPorCuota = interes/plazoMeses;
+            for (int i = 1; i <= plazoMeses; i++)
+            {
+                cuotas.Add(new Cuota
+                {
+                    NumeroCuota = i,
+                    MontoCuota = montoPorCuota,
+                    InteresCuota = interesPorCuota,
+                    TotalCuota = montoPorCuota + (interesPorCuota / plazoMeses)
+                });
+            }
+
+            return cuotas;
+        }
+    }
+    public class Cuota
+    {
+        public int NumeroCuota { get; set; }
+        public decimal MontoCuota { get; set; }
+        public decimal InteresCuota { get; set; }
+        public decimal TotalCuota { get; set; }
+
     }
 }

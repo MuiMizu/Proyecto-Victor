@@ -41,6 +41,7 @@ namespace Factura
 
         Prestamo prestamo = new Prestamo();
 
+
         private void button1_Click(object sender, EventArgs e)
         {
             try
@@ -90,7 +91,8 @@ namespace Factura
                 textBox11.Text = prestamo.MontoPorCuota.ToString("C");
                 prestamo.Estado = Estado;
 
-
+                List<Cuota> cuotas = prestamo.GenerarTablaCuotas(prestamo.MontoTotal, prestamo.PlazoMeses, prestamo.MontoPorCuota, prestamo.Interes);
+                dataGridView1.DataSource = cuotas;
                 MessageBox.Show("Préstamo calculado exitosamente.");
             }
             catch (Exception ex)
@@ -128,5 +130,6 @@ namespace Factura
                 MessageBox.Show($"Error: {ex.Message}");
             }
         }
+
     }
 }
