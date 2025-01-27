@@ -117,11 +117,13 @@ namespace Factura
 
                 if (resultado && resultado2)
                 {
-                    MessageBox.Show("Datos registrados exitosamente.");
+                    MessageBox.Show($"Préstamo registrado exitosamente con ID: {prestamo.PrestamoID}");
+                    fondoDisponible = fondoDisponible - prestamo.Monto;
+                    clienteBLL.ActualizarFondoDisponible(fondoDisponible);
                 }
                 else
                 {
-                    MessageBox.Show("Error al registrar los datos.");
+                    MessageBox.Show("Error al registrar el prestamo.");
                 }
 
             }

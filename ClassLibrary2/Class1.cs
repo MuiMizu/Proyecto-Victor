@@ -26,6 +26,7 @@ namespace ClassLibrary2
 
     public class Prestamo
     {
+        public int PrestamoID { get; set; }
         public decimal Monto { get; set; }
         public int PlazoMeses { get; set; }
         public decimal Interes { get; set; }

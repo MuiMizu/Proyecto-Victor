@@ -58,6 +58,11 @@ namespace ClassLibrary1
             return clienteDAL.ObtenerFondoDisponible();
         }
 
+        public bool ActualizarFondoDisponible(decimal nuevoMonto)
+        {
+            return clienteDAL.ActualizarFondoDisponible(nuevoMonto);
+        }
+
         public bool RegistrarPrestamo(Prestamo prestamo)
         {
             return clienteDAL.RegistrarPrestamo(prestamo);

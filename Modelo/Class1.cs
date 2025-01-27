@@ -150,8 +150,10 @@ namespace Modelo
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    string query = "INSERT INTO Prestamos (ClienteID, Monto, PlazoEnMeses, InteresAplicado, MontoTotal, Estado) " +
-                                   "VALUES (@ClienteID, @Monto, @PlazoEnMeses, @InteresAplicado, @MontoTotal, @Estado)";
+                    string query = @"INSERT INTO Prestamos 
+                    (ClienteID, Monto, PlazoEnMeses, InteresAplicado, MontoTotal, Estado) 
+                    VALUES (@ClienteID, @Monto, @PlazoEnMeses, @InteresAplicado, @MontoTotal, @Estado);
+                    SELECT SCOPE_IDENTITY();";
                     SqlCommand command = new SqlCommand(query, connection);
 
                     command.Parameters.AddWithValue("@ClienteID", Sesion.ClienteId);
@@ -162,15 +164,27 @@ namespace Modelo
                     command.Parameters.AddWithValue("@Estado", prestamo.Estado);
 
                     connection.Open();
-                    command.ExecuteNonQuery();
-                    return true;
+                    object result = command.ExecuteScalar();
+
+                    if (result != null)
+                    {
+                        prestamo.PrestamoID = Convert.ToInt32(result); 
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }
+
             }
+            
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine("Error al registrar el préstamo: " + ex.Message);
                 return false;
             }
+
         }
 
     }
