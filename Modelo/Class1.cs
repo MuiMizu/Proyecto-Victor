@@ -101,6 +101,8 @@ namespace Modelo
             }
         }
 
+
+
         public decimal ObtenerFondoDisponible()
         {
             try
@@ -186,6 +188,48 @@ namespace Modelo
             }
 
         }
+
+        public bool CargarDatosPago (Prestamo prestamo, Cliente cliente)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string query = "SELECT NombreCompleto, Correo, Sueldo, Direccion, Telefono, Garantia, p.Monto,  p.PlazoEnMeses,  p.InteresAplicado,  p.MontoTotal\r\nFROM Clientes c\r\nJOIN Prestamos p ON c.ClienteID = p.ClienteID\r\nWHERE p.PrestamoID = @PrestamoID;";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@PrestamoID", prestamo.PrestamoID);
+
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        Sesion.NombreCompleto = reader["NombreCompleto"].ToString();
+                        Sesion.Correo = reader["Correo"].ToString();
+                        cliente.Sueldo = (decimal)reader["Sueldo"];
+                        cliente.Direccion = reader["Direccion"].ToString();
+                        cliente.Telefono = reader["Telefono"].ToString();
+                        cliente.Garantia = reader["Garantia"].ToString();
+                        prestamo.Monto = (decimal)reader["Monto"];
+                        prestamo.PlazoMeses = (int)reader["PlazoMeses"];
+                        prestamo.Interes = (decimal)reader["InteresAplicado"];
+                        prestamo.MontoTotal = (decimal)reader["MontoTotal"];
+
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+
 
     }
 
