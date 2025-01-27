@@ -68,9 +68,9 @@ namespace ClassLibrary1
             return clienteDAL.RegistrarPrestamo(prestamo);
         }
 
-        public bool CargarDatosPago()
+        public bool CargarDatosPago(Prestamo prestamo, Cliente cliente)
         {
-            return CargarDatosPago();
+            return clienteDAL.CargarDatosPago(prestamo, cliente);
         }
     }
 }

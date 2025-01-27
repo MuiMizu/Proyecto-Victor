@@ -195,7 +195,21 @@ namespace Modelo
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    string query = "SELECT NombreCompleto, Correo, Sueldo, Direccion, Telefono, Garantia, p.Monto,  p.PlazoEnMeses,  p.InteresAplicado,  p.MontoTotal\r\nFROM Clientes c\r\nJOIN Prestamos p ON c.ClienteID = p.ClienteID\r\nWHERE p.PrestamoID = @PrestamoID;";
+                    string query = @"
+                SELECT 
+                    NombreCompleto, 
+                    Correo, 
+                    Sueldo, 
+                    Direccion, 
+                    Telefono, 
+                    Garantia, 
+                    p.Monto,  
+                    p.PlazoEnMeses,  
+                    p.InteresAplicado,  
+                    p.MontoTotal
+                FROM Clientes c
+                JOIN Prestamos p ON c.ClienteID = p.ClienteID
+                WHERE p.PrestamoID = @PrestamoID;";
                     SqlCommand command = new SqlCommand(query, connection);
                     command.Parameters.AddWithValue("@PrestamoID", prestamo.PrestamoID);
 
@@ -211,7 +225,7 @@ namespace Modelo
                         cliente.Telefono = reader["Telefono"].ToString();
                         cliente.Garantia = reader["Garantia"].ToString();
                         prestamo.Monto = (decimal)reader["Monto"];
-                        prestamo.PlazoMeses = (int)reader["PlazoMeses"];
+                        prestamo.PlazoMeses = (int)reader["PlazoEnMeses"];
                         prestamo.Interes = (decimal)reader["InteresAplicado"];
                         prestamo.MontoTotal = (decimal)reader["MontoTotal"];
 

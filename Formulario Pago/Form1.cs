@@ -22,20 +22,52 @@ namespace Formulario_Pago
         Prestamo prestamo = new Prestamo();
         Cliente cliente = new Cliente();
         ClienteBLL clienteBLL = new ClienteBLL();
+        Cuota cuota = new Cuota();
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            prestamo.PrestamoID = Convert.ToInt32(textBox1.Text);
-            clienteBLL.CargarDatosPago();
-            textBox2.Text = Sesion.NombreCompleto;
-            textBox4.Text = Sesion.Correo;
-            textBox6.Text = Convert.ToString(cliente.Sueldo);
-            textBox3.Text = cliente.Direccion;
-            textBox5.Text = cliente.Telefono;
-            textBox7.Text = cliente.Garantia;
-            textBox8.Text = Convert.ToString(prestamo.Monto);
-            textBox10.Text = Convert.ToString(prestamo.PlazoMeses);
-            textBox12.Text = Convert.ToString(prestamo.Interes);
-            textBox13.Text = Convert.ToString(prestamo.MontoTotal);
+            try
+            {
+
+                if (string.IsNullOrWhiteSpace(textBox1.Text))
+                {
+                    MessageBox.Show("Por favor, ingresa un ID de préstamo válido.");
+                    return;
+                }
+
+
+                prestamo.PrestamoID = Convert.ToInt32(textBox1.Text);
+
+                bool datosCargados = clienteBLL.CargarDatosPago(prestamo, cliente);
+
+                if (datosCargados)
+                {
+    
+                    textBox2.Text = Sesion.NombreCompleto;
+                    textBox4.Text = Sesion.Correo;
+                    textBox6.Text = cliente.Sueldo.ToString("N2"); 
+                    textBox3.Text = cliente.Direccion;
+                    textBox5.Text = cliente.Telefono;
+                    textBox7.Text = cliente.Garantia;
+                    textBox8.Text = prestamo.Monto.ToString("N2"); 
+                    textBox10.Text = prestamo.PlazoMeses.ToString();
+                    textBox12.Text = prestamo.Interes.ToString("N2"); 
+                    textBox13.Text = prestamo.MontoTotal.ToString("N2"); 
+                    textBox11.Text = (prestamo.MontoTotal / prestamo.PlazoMeses).ToString("N2");
+
+                }
+                else
+                {
+                    MessageBox.Show("No se encontraron datos para el ID de préstamo ingresado.");
+                }
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("El ID de préstamo debe ser un número válido.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error al cargar los datos: " + ex.Message);
+            }
 
         }
 
