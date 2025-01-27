@@ -63,9 +63,9 @@ namespace ClassLibrary2
                 cuotas.Add(new Cuota
                 {
                     NumeroCuota = i,
-                    MontoCuota = montoPorCuota,
-                    InteresCuota = interesPorCuota,
-                    TotalCuota = montoPorCuota + (interesPorCuota / plazoMeses)
+                    MontoCuota = Math.Round(montoPorCuota,2),
+                    InteresCuota = Math.Round(interesPorCuota,2),
+                    TotalCuota = Math.Round(montoPorCuota + interesPorCuota,2)
                 });
             }
 

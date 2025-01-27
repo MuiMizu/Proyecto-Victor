@@ -93,6 +93,12 @@ namespace Factura
 
                 List<Cuota> cuotas = prestamo.GenerarTablaCuotas(prestamo.MontoTotal, prestamo.PlazoMeses, prestamo.MontoPorCuota, prestamo.Interes);
                 dataGridView1.DataSource = cuotas;
+                dataGridView1.Columns["NumeroCuota"].HeaderText = "Número de Cuota";
+                dataGridView1.Columns["MontoCuota"].HeaderText = "Monto de la Cuota";
+                dataGridView1.Columns["InteresCuota"].HeaderText = "Interés de la Cuota";
+                dataGridView1.Columns["TotalCuota"].HeaderText = "Total de la Cuota";
+
+
                 MessageBox.Show("Préstamo calculado exitosamente.");
             }
             catch (Exception ex)
