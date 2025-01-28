@@ -139,9 +139,10 @@ namespace Modelo
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    string query = "UPDATE Fondo SET MontoDisponible = @MontoDisponible";
+
+                    string query = "UPDATE Fondo SET MontoDisponible = MontoDisponible + @MontoPagado";
                     SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@MontoDisponible", nuevoMonto);
+                    command.Parameters.AddWithValue("@MontoPagado", nuevoMonto);
 
                     connection.Open();
                     command.ExecuteNonQuery();
@@ -154,6 +155,7 @@ namespace Modelo
                 return false;
             }
         }
+
 
         public bool RegistrarPrestamo(Prestamo prestamo)
         {

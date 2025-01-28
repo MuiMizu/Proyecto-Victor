@@ -97,12 +97,10 @@ namespace Formulario_Pago
 
         private void button1_Click(object sender, EventArgs e)
         {
-            prestamo.MontoTotal = prestamo.MontoTotal + prestamo.MontoPorCuota;
-            fondo.MontoDisponible = fondo.MontoDisponible + Convert.ToDecimal(textBox16.Text);
-            clienteBLL.ActualizarFondoDisponible(fondo.MontoDisponible);
+            prestamo.MontoTotal = prestamo.MontoTotal - prestamo.MontoPorCuota;
+            decimal montoCuota = Convert.ToDecimal(textBox16.Text);
+            clienteBLL.ActualizarFondoDisponible(montoCuota);
 
         }
-
-
     }
 }
