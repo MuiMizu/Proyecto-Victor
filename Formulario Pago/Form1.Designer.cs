@@ -418,6 +418,7 @@
             this.textBox14.ReadOnly = true;
             this.textBox14.Size = new System.Drawing.Size(211, 22);
             this.textBox14.TabIndex = 17;
+            this.textBox14.TextChanged += new System.EventHandler(this.textBox14_TextChanged);
             // 
             // label16
             // 
@@ -426,9 +427,9 @@
             this.label16.Location = new System.Drawing.Point(8, 36);
             this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(72, 20);
+            this.label16.Size = new System.Drawing.Size(66, 20);
             this.label16.TabIndex = 18;
-            this.label16.Text = "N. Cuotas";
+            this.label16.Text = "N. Cuota";
             // 
             // label17
             // 

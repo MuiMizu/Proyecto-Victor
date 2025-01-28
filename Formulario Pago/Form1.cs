@@ -39,7 +39,10 @@ namespace Formulario_Pago
 
                 bool datosCargados = clienteBLL.CargarDatosPago(prestamo, cliente);
 
-                if (datosCargados)
+                bool DatosCargados2 = clienteBLL.CargarCuotas(prestamo, cuota);
+
+
+                if (datosCargados && DatosCargados2)
                 {
     
                     textBox2.Text = Sesion.NombreCompleto;
@@ -53,6 +56,8 @@ namespace Formulario_Pago
                     textBox12.Text = prestamo.Interes.ToString("N2"); 
                     textBox13.Text = prestamo.MontoTotal.ToString("N2"); 
                     textBox11.Text = (prestamo.MontoTotal / prestamo.PlazoMeses).ToString("N2");
+                    textBox14.Text = cuota.NumeroCuota+1.ToString();
+                    textBox16.Text = (prestamo.MontoTotal/prestamo.PlazoMeses).ToString("N2");
 
                 }
                 else
@@ -76,5 +81,9 @@ namespace Formulario_Pago
 
         }
 
+        private void textBox14_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

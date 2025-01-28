@@ -244,6 +244,40 @@ namespace Modelo
             }
         }
 
+        public bool CargarCuotas (Prestamo prestamo,Cuota cuota)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string query = @"SELECT COUNT(*) AS PagosHechos FROM Pagos p JOIN Prestamos pr ON p.PrestamoID = pr.PrestamoID WHERE pr.PrestamoID = @PrestamoID;";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@PrestamoID", prestamo.PrestamoID);
+
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        cuota.NumeroCuota = Convert.ToInt32(reader["PagosHechos"]);
+                        
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+
+
+
 
     }
 

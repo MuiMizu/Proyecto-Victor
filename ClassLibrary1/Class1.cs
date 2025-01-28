@@ -72,5 +72,10 @@ namespace ClassLibrary1
         {
             return clienteDAL.CargarDatosPago(prestamo, cliente);
         }
+
+        public bool CargarCuotas(Prestamo prestamo, Cuota cuota)
+        {
+            return clienteDAL.CargarCuotas(prestamo, cuota);
+        }
     }
 }
