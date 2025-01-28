@@ -173,7 +173,7 @@
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(8, 58);
+            this.textBox8.Location = new System.Drawing.Point(-3, 58);
             this.textBox8.Margin = new System.Windows.Forms.Padding(4);
             this.textBox8.Name = "textBox8";
             this.textBox8.ReadOnly = true;

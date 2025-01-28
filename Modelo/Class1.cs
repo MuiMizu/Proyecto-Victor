@@ -40,6 +40,35 @@ namespace Modelo
             }
         }
 
+        public bool RegistrarPago(Pago pago)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string query = "INSERT INTO Pago (PagoID, MontoAnterior, InteresPagado, MontoAbonado, MontoPagado, MontoRestante) " +
+                                   "VALUES (@PagoID, @MontoAnterior, @InteresPagado,@MontoAbonado, @MontoPagado, @MontoRestante,@PagoID)";
+                    SqlCommand command = new SqlCommand(query, connection);
+
+                    command.Parameters.AddWithValue("@PagoID", pago.PagoID);
+                    command.Parameters.AddWithValue("@MontoAnterior", pago.MontoAnterior);
+                    command.Parameters.AddWithValue("@InteresPagado", pago.InteresPagado);
+                    command.Parameters.AddWithValue("@MontoAbonado", pago.MontoAbonado);
+                    command.Parameters.AddWithValue("@MontoPagado", pago.MontoPagado);
+                    command.Parameters.AddWithValue("@MontoRestante", pago.MontoRestante);
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+
         public bool RegistrarDatos(Cliente cliente)
         {
             try

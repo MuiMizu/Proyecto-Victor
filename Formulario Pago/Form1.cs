@@ -24,7 +24,7 @@ namespace Formulario_Pago
         ClienteBLL clienteBLL = new ClienteBLL();
         Cuota cuota = new Cuota();
         Fondo fondo = new Fondo();
-
+        Pago pago = new Pago();
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -97,6 +97,12 @@ namespace Formulario_Pago
 
         private void button1_Click(object sender, EventArgs e)
         {
+            textBox8.Text = Convert.ToString(pago.MontoAnterior);
+            textBox12.Text = Convert.ToString(pago.InteresPagado);
+            textBox15.Text = Convert.ToString(pago.MontoAbonado);
+            textBox11.Text = Convert.ToString(pago.MontoPagado);
+            //Falta el monto restante
+
             prestamo.MontoTotal = prestamo.MontoTotal - prestamo.MontoPorCuota;
             decimal montoCuota = Convert.ToDecimal(textBox16.Text);
             clienteBLL.ActualizarFondoDisponible(montoCuota);
