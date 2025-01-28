@@ -24,6 +24,14 @@ namespace ClassLibrary2
         public string Contraseña { get; set; }
     }
 
+    public class Fondo
+    {
+        public decimal FondoID { get; set; }
+
+        public decimal MontoDisponible { get; set; }
+    }
+
+
     public class Pago
     {
 

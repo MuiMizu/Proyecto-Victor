@@ -53,9 +53,9 @@ namespace ClassLibrary1
             }
         }
 
-        public decimal ObtenerFondoDisponible()
+        public decimal ObtenerFondoDisponible(Fondo fondo)
         {
-            return clienteDAL.ObtenerFondoDisponible();
+            return clienteDAL.ObtenerFondoDisponible(fondo);
         }
 
         public bool ActualizarFondoDisponible(decimal nuevoMonto)

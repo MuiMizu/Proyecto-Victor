@@ -21,22 +21,16 @@ namespace Factura
         }
 
         Cliente cliente = new Cliente();
-        private decimal fondoDisponible;
+        Fondo fondo = new Fondo();  
+
 
         ClienteBLL clienteBLL = new ClienteBLL();
         private void Form1_Load(object sender, EventArgs e)
         {
             textBox2.Text = Sesion.NombreCompleto.ToString();
             textBox4.Text = Sesion.Correo.ToString();
+            clienteBLL.ObtenerFondoDisponible(fondo);
 
-            try
-            {
-                fondoDisponible = clienteBLL.ObtenerFondoDisponible();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al cargar el fondo disponible: " + ex.Message);
-            }
         }
 
         Prestamo prestamo = new Prestamo();
@@ -73,7 +67,7 @@ namespace Factura
                     return;
                 }
 
-                if (montoPrestamo > fondoDisponible)
+                if (montoPrestamo > fondo.MontoDisponible)
                 {
                     MessageBox.Show("El fondo disponible no es suficiente para este préstamo.");
                     return;
@@ -124,8 +118,8 @@ namespace Factura
                 if (resultado && resultado2)
                 {
                     MessageBox.Show($"Préstamo registrado exitosamente con ID: {prestamo.PrestamoID}");
-                    fondoDisponible = fondoDisponible - prestamo.Monto;
-                    clienteBLL.ActualizarFondoDisponible(fondoDisponible);
+                    fondo.MontoDisponible = fondo.MontoDisponible - prestamo.Monto;
+                    clienteBLL.ActualizarFondoDisponible(fondo.MontoDisponible);
                 }
                 else
                 {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using ClassLibrary2;
@@ -91,7 +92,7 @@ namespace Modelo
                     else
                     {
                         return -1; 
-                    }
+                    } 
                 }
             }
             catch (Exception ex)
@@ -103,7 +104,7 @@ namespace Modelo
 
 
 
-        public decimal ObtenerFondoDisponible()
+        public decimal ObtenerFondoDisponible(Fondo fondo)
         {
             try
             {
@@ -113,8 +114,16 @@ namespace Modelo
                     SqlCommand command = new SqlCommand(query, connection);
 
                     connection.Open();
-                    object resultado = command.ExecuteScalar();
-                    return resultado != null ? Convert.ToDecimal(resultado) : 0;
+                    SqlDataReader reader = command.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        fondo.MontoDisponible = (decimal)reader["MontoDisponible"];
+                        return fondo.MontoDisponible;
+                    }
+                    else
+                    {
+                        return -1;
+                    }
                 }
             }
             catch (Exception ex)

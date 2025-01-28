@@ -23,6 +23,15 @@ namespace Formulario_Pago
         Cliente cliente = new Cliente();
         ClienteBLL clienteBLL = new ClienteBLL();
         Cuota cuota = new Cuota();
+        Fondo fondo = new Fondo();
+
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            clienteBLL.ObtenerFondoDisponible(fondo);
+        }
+
+
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             try
@@ -85,5 +94,15 @@ namespace Formulario_Pago
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            prestamo.MontoTotal = prestamo.MontoTotal + prestamo.MontoPorCuota;
+            fondo.MontoDisponible = fondo.MontoDisponible + Convert.ToDecimal(textBox16.Text);
+            clienteBLL.ActualizarFondoDisponible(fondo.MontoDisponible);
+
+        }
+
+
     }
 }
