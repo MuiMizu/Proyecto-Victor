@@ -24,6 +24,25 @@ namespace ClassLibrary2
         public string Contraseña { get; set; }
     }
 
+    public class Pago
+    {
+
+        public int PagoID { get; set; }
+        public decimal MontoAnterior { get; set; }
+
+        public decimal InteresPagado { get; set; }
+
+        public decimal MontoAbonado { get; set; }
+
+        public decimal MontoPagado { get; set; }
+
+        public decimal MontoRestante { get; set; }
+
+        public bool Mora { get; set; }
+
+    }
+
+
     public class Prestamo
     {
         public int PrestamoID { get; set; }
