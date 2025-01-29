@@ -118,7 +118,7 @@ namespace Factura
                 if (resultado && resultado2)
                 {
                     MessageBox.Show($"Préstamo registrado exitosamente con ID: {prestamo.PrestamoID}");
-                    fondo.MontoDisponible = fondo.MontoDisponible - prestamo.MontoTotal;
+                    fondo.MontoDisponible = fondo.MontoDisponible - prestamo.Monto;
                     clienteBLL.ActualizarFondoDisponible(fondo.MontoDisponible);
                 }
                 else

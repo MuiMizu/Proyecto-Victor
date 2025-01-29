@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
@@ -169,9 +170,9 @@ namespace Modelo
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
 
-                    string query = "UPDATE Fondo SET MontoDisponible = MontoDisponible + @MontoPagado";
+                    string query = "UPDATE Fondo SET MontoDisponible = @MontoDisponible";
                     SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@MontoPagado", nuevoMonto);
+                    command.Parameters.AddWithValue("@MontoDisponible", nuevoMonto);
 
                     connection.Open();
                     command.ExecuteNonQuery();
@@ -316,7 +317,35 @@ namespace Modelo
             }
         }
 
+        public bool RegistrarPago(Prestamo prestamo, Pago pago)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string procedureName = "RegistrarPago";
+                    SqlCommand command = new SqlCommand(procedureName, connection);
+                    command.CommandType = CommandType.StoredProcedure;
 
+
+                    command.Parameters.AddWithValue("@PrestamoID", prestamo.PrestamoID);
+                    command.Parameters.AddWithValue("@MontoPagado", pago.MontoPagado);
+                    command.Parameters.AddWithValue("@InteresPagado", pago.InteresPagado);
+                    command.Parameters.AddWithValue("@MontoAbonado", pago.MontoAbonado);
+                    command.Parameters.AddWithValue("@Mora", pago.Mora);
+
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al registrar el pago: " + ex.Message);
+                return false;
+            }
+        }
 
 
     }

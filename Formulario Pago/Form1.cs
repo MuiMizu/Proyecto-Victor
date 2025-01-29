@@ -65,7 +65,8 @@ namespace Formulario_Pago
                     textBox12.Text = prestamo.Interes.ToString("N2"); 
                     textBox13.Text = prestamo.MontoTotal.ToString("N2"); 
                     textBox11.Text = (prestamo.MontoTotal / prestamo.PlazoMeses).ToString("N2");
-                    textBox14.Text = cuota.NumeroCuota+1.ToString();
+                    cuota.NumeroCuota = cuota.NumeroCuota + 1;
+                    textBox14.Text = cuota.NumeroCuota.ToString();
                     textBox16.Text = (prestamo.MontoTotal/prestamo.PlazoMeses).ToString("N2");
 
                 }
@@ -97,15 +98,40 @@ namespace Formulario_Pago
 
         private void button1_Click(object sender, EventArgs e)
         {
-            textBox8.Text = Convert.ToString(pago.MontoAnterior);
-            textBox12.Text = Convert.ToString(pago.InteresPagado);
-            textBox15.Text = Convert.ToString(pago.MontoAbonado);
-            textBox11.Text = Convert.ToString(pago.MontoPagado);
-            //Falta el monto restante
+            
 
-            prestamo.MontoTotal = prestamo.MontoTotal - prestamo.MontoPorCuota;
+
+
+            decimal a = Convert.ToDecimal(textBox12.Text);
+            decimal  b = Convert.ToDecimal(textBox10.Text);
+
+            pago.MontoPagado = Convert.ToDecimal(textBox16.Text) - (a/b);
+            pago.InteresPagado = a / b;
+            if (string.IsNullOrWhiteSpace(textBox15.Text))
+            {
+                pago.MontoAbonado = 0;
+            }
+            else 
+            {
+                pago.MontoAbonado = Convert.ToDecimal(textBox15.Text);
+            }
+
+            pago.Mora = false;
+
+            bool resultado = clienteBLL.RegistrarPago(prestamo, pago);
+
+            if (resultado)
+            {
+                MessageBox.Show("Pago registrado correctamente.");
+            }
+            else
+            {
+                MessageBox.Show("Error al registrar el pago.");
+            }
+
             decimal montoCuota = Convert.ToDecimal(textBox16.Text);
-            clienteBLL.ActualizarFondoDisponible(montoCuota);
+            fondo.MontoDisponible = fondo.MontoDisponible + montoCuota;
+            clienteBLL.ActualizarFondoDisponible(fondo.MontoDisponible);
 
         }
     }

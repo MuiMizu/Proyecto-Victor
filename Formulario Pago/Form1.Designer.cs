@@ -438,9 +438,9 @@
             this.label17.Location = new System.Drawing.Point(8, 203);
             this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(128, 20);
+            this.label17.Size = new System.Drawing.Size(165, 20);
             this.label17.TabIndex = 20;
-            this.label17.Text = "Abono (Opcional)";
+            this.label17.Text = "Abono Extra (Opcional)";
             // 
             // pictureBox1
             // 
