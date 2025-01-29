@@ -323,7 +323,7 @@ namespace Modelo
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    string procedureName = "RegistrarPago";
+                    string procedureName = "RegistrarCobros";
                     SqlCommand command = new SqlCommand(procedureName, connection);
                     command.CommandType = CommandType.StoredProcedure;
 
