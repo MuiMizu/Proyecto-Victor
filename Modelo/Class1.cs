@@ -419,6 +419,104 @@ namespace Modelo
                 return false;
             }
         }
+
+        public bool CargarAbonoTotal(Prestamo prestamo, Pago pago)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string query = @"SELECT SUM(MontoAbonado) AS AbonoTotal FROM Pagos WHERE PrestamoID = @PrestamoID;";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@PrestamoID", prestamo.PrestamoID);
+
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+
+                        pago.AbonoTotal = reader.IsDBNull(0) ? 0 : reader.GetDecimal(0);
+                        return true;
+                    }
+                    else
+                    {
+                        pago.AbonoTotal = 0; 
+                        return true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+        public bool RegistrarAbono(Prestamo prestamo, Recalculo recalculo)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string query = @"INSERT INTO Recalculo (PrestamoID, Monto, Cuotas, Interes, MontoTotal) 
+                                   VALUES (@PrestamoID, @Monto, @Cuotas, @Interes, @MontoTotal);";
+                    SqlCommand command = new SqlCommand(query, connection);
+
+                    command.Parameters.AddWithValue("@PrestamoID", prestamo.PrestamoID);
+                    command.Parameters.AddWithValue("@Monto", recalculo.Monto);
+                    command.Parameters.AddWithValue("@Cuotas", recalculo.Cuotas);
+                    command.Parameters.AddWithValue("@Interes", recalculo.Interes);
+                    command.Parameters.AddWithValue("@MontoTotal", recalculo.Total);
+
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al registrar el pago: " + ex.Message);
+                return false;
+            }
+        }
+        public bool CargarRecalculo (Prestamo prestamo, Recalculo recalculo)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string query = @" SELECT TOP 1 Monto, Interes, MontoTotal, Cuotas
+                                      FROM Recalculo 
+                                      WHERE PrestamoID = @PrestamoID
+                                      ORDER BY RecalculoID DESC;";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@PrestamoID", prestamo.PrestamoID);
+
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        recalculo.Monto = (decimal)reader["Monto"];
+                        recalculo.Interes = (decimal)reader["Interes"];
+                        recalculo.Total = (decimal)reader["MontoTotal"];
+                        recalculo.Cuotas = (int)reader["Cuotas"];
+
+                        return true;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
     }
 
 }

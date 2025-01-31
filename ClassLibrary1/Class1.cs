@@ -92,5 +92,20 @@ namespace ClassLibrary1
         {
             return clienteDAL.CargarUltimoMonto(prestamo, pago);
         }
+
+        public bool CargarAbonoTotal(Prestamo prestamo, Pago pago)
+        {
+            return clienteDAL.CargarAbonoTotal(prestamo, pago);
+        }
+
+        public bool RegistrarAbono(Prestamo prestamo, Recalculo recalculo)
+        {
+            return clienteDAL.RegistrarAbono(prestamo, recalculo);
+        }
+
+        public bool CargarRecalculo(Prestamo prestamo, Recalculo recalculo)
+        {
+            return clienteDAL.CargarRecalculo(prestamo, recalculo);
+        }
     }
 }

@@ -25,6 +25,7 @@ namespace Formulario_Pago
         Cuota cuota = new Cuota();
         Fondo fondo = new Fondo();
         Pago pago = new Pago();
+        Recalculo recalculo = new Recalculo();
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -47,14 +48,15 @@ namespace Formulario_Pago
                 prestamo.PrestamoID = Convert.ToInt32(textBox1.Text);
 
                 bool datosCargados = clienteBLL.CargarDatosPago(prestamo, cliente);
-
                 bool DatosCargados2 = clienteBLL.CargarCuotas(prestamo, cuota);
-
                 bool datosCargados3 = clienteBLL.CargarAbonos(prestamo, pago);
                 bool datosCargados4 = clienteBLL.CargarUltimoMonto(prestamo, pago);
+                bool datosCargados5 = clienteBLL.CargarAbonoTotal(prestamo, pago);
 
-                if (datosCargados && DatosCargados2 && datosCargados3 && datosCargados4)
+
+                if (datosCargados && DatosCargados2 && datosCargados3 && datosCargados4 && datosCargados5)
                 {
+
                     if (pago.MontoAbonado > 0)
                     {
 
@@ -68,15 +70,37 @@ namespace Formulario_Pago
                         textBox11.Text = (MontoTotal / PagosRestantes).ToString("N2");
                         textBox16.Text = (MontoTotal / PagosRestantes).ToString("N2");
 
+                        recalculo.Cuotas = Convert.ToInt32(PagosRestantes);
+                        recalculo.Monto = Convert.ToDecimal(textBox8.Text);
+                        recalculo.Interes = Convert.ToDecimal(textBox12.Text);
+                        recalculo.Total = Convert.ToDecimal(textBox13.Text);
+
                     }
                     else
                     {
-                        textBox8.Text = prestamo.Monto.ToString("N2");
-                        textBox16.Text = (prestamo.MontoTotal / prestamo.PlazoMeses).ToString("N2");
-                        textBox10.Text = prestamo.PlazoMeses.ToString();
-                        textBox12.Text = prestamo.Interes.ToString("N2");
-                        textBox13.Text = prestamo.MontoTotal.ToString("N2");
-                        textBox11.Text = (prestamo.MontoTotal / prestamo.PlazoMeses).ToString("N2");
+                        if (pago.AbonoTotal > 0)
+                        {
+                            clienteBLL.CargarRecalculo(prestamo, recalculo);
+                            textBox8.Text = recalculo.Monto.ToString("N2");
+                            textBox10.Text = recalculo.Cuotas.ToString();
+                            textBox12.Text = recalculo.Interes.ToString("N2");
+                            textBox13.Text = recalculo.Total.ToString("N2");
+                            decimal PagoCuota = recalculo.Total / recalculo.Cuotas;
+                            textBox11.Text = PagoCuota.ToString("N2");
+                            textBox16.Text = PagoCuota.ToString("N2");
+
+
+                        }
+                        else
+                        {
+                            textBox8.Text = prestamo.Monto.ToString("N2");
+                            textBox16.Text = (prestamo.MontoTotal / prestamo.PlazoMeses).ToString("N2");
+                            textBox10.Text = prestamo.PlazoMeses.ToString();
+                            textBox12.Text = prestamo.Interes.ToString("N2");
+                            textBox13.Text = prestamo.MontoTotal.ToString("N2");
+                            textBox11.Text = (prestamo.MontoTotal / prestamo.PlazoMeses).ToString("N2");
+                        }
+
                     }
 
                     textBox2.Text = Sesion.NombreCompleto;
@@ -134,6 +158,17 @@ namespace Formulario_Pago
             else 
             {
                 pago.MontoAbonado = Convert.ToDecimal(textBox15.Text);
+
+                bool resultadoS = clienteBLL.RegistrarAbono(prestamo, recalculo);
+
+                if (resultadoS)
+                {
+                    MessageBox.Show("Abono registrado correctamente.");
+                }
+                else
+                {
+                    MessageBox.Show("Error al registrar el abono.");
+                }
 
             }
 

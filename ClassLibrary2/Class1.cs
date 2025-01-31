@@ -41,6 +41,7 @@ namespace ClassLibrary2
         public decimal InteresPagado { get; set; }
 
         public decimal MontoAbonado { get; set; }
+        public decimal AbonoTotal { get; set; }
 
         public decimal MontoPagado { get; set; }
 
@@ -105,6 +106,15 @@ namespace ClassLibrary2
         public decimal MontoCuota { get; set; }
         public decimal InteresCuota { get; set; }
         public decimal TotalCuota { get; set; }
+
+    }
+
+    public class Recalculo
+    {
+        public int Cuotas { get; set; }
+        public decimal Monto { get; set; }
+        public decimal Interes { get; set; }
+        public decimal Total { get; set; }
 
     }
 }
