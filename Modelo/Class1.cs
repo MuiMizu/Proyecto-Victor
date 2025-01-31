@@ -323,7 +323,7 @@ namespace Modelo
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    string procedureName = "RegistrarCobros";
+                    string procedureName = "RegistrarCobross";
                     SqlCommand command = new SqlCommand(procedureName, connection);
                     command.CommandType = CommandType.StoredProcedure;
 
@@ -346,8 +346,79 @@ namespace Modelo
                 return false;
             }
         }
+        public bool CargarUltimoMonto(Prestamo prestamo, Pago pago)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string query = @"SELECT TOP 1 MontoRestante  
+                                    FROM Pagos pa 
+                                    JOIN Prestamos p ON pa.PrestamoID = p.PrestamoID 
+                                    WHERE p.PrestamoID = @PrestamoID
+                                    ORDER BY PagoID DESC;";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@PrestamoID", prestamo.PrestamoID);
 
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
 
+                    if (reader.Read())
+                    {
+                        pago.MontoRestante = Convert.ToDecimal(reader["MontoRestante"]);
+
+                        return true;
+                    }
+                    else
+                    {
+                        pago.MontoRestante = prestamo.Monto;
+                        return true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+
+        public bool CargarAbonos(Prestamo prestamo, Pago pago)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string query = @"SELECT TOP 1 MontoAbonado 
+                                    FROM Pagos pa 
+                                    JOIN Prestamos p ON pa.PrestamoID = p.PrestamoID 
+                                    WHERE p.PrestamoID = @PrestamoID
+                                    ORDER BY PagoID DESC;";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@PrestamoID", prestamo.PrestamoID);
+
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        pago.MontoAbonado = Convert.ToDecimal(reader["MontoAbonado"]);
+
+                        return true;
+                    }
+                    else
+                    {
+                        pago.MontoAbonado = 0;
+                        return true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
     }
 
 }

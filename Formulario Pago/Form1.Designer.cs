@@ -64,6 +64,7 @@
             this.label17 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -72,6 +73,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.textBox13);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.textBox12);
@@ -427,9 +429,9 @@
             this.label16.Location = new System.Drawing.Point(8, 36);
             this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(66, 20);
+            this.label16.Size = new System.Drawing.Size(60, 20);
             this.label16.TabIndex = 18;
-            this.label16.Text = "N. Cuota";
+            this.label16.Text = "N. Pago";
             // 
             // label17
             // 
@@ -467,6 +469,18 @@
             this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(36, 232);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(566, 17);
+            this.label10.TabIndex = 21;
+            this.label10.Text = "En caso de realizar un abono extra o retrasar el pago se recalcularan los detalle" +
+    "s del prestamo";
             // 
             // Form1
             // 
@@ -536,6 +550,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox15;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label10;
     }
 }
 

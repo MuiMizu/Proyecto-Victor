@@ -50,24 +50,44 @@ namespace Formulario_Pago
 
                 bool DatosCargados2 = clienteBLL.CargarCuotas(prestamo, cuota);
 
+                bool datosCargados3 = clienteBLL.CargarAbonos(prestamo, pago);
+                bool datosCargados4 = clienteBLL.CargarUltimoMonto(prestamo, pago);
 
-                if (datosCargados && DatosCargados2)
+                if (datosCargados && DatosCargados2 && datosCargados3 && datosCargados4)
                 {
-    
+                    if (pago.MontoAbonado > 0)
+                    {
+
+                        textBox8.Text = pago.MontoRestante.ToString("N2");
+                        int PagosRestantes = prestamo.PlazoMeses - cuota.NumeroCuota;
+                        decimal Interes = pago.MontoRestante * (prestamo.CalcularInteres(PagosRestantes) / 100);
+                        textBox10.Text = PagosRestantes.ToString();
+                        textBox12.Text = Interes.ToString("N2");
+                        decimal MontoTotal = pago.MontoRestante + Interes;
+                        textBox13.Text = MontoTotal.ToString("N2");
+                        textBox11.Text = (MontoTotal / PagosRestantes).ToString("N2");
+                        textBox16.Text = (MontoTotal / PagosRestantes).ToString("N2");
+
+                    }
+                    else
+                    {
+                        textBox8.Text = prestamo.Monto.ToString("N2");
+                        textBox16.Text = (prestamo.MontoTotal / prestamo.PlazoMeses).ToString("N2");
+                        textBox10.Text = prestamo.PlazoMeses.ToString();
+                        textBox12.Text = prestamo.Interes.ToString("N2");
+                        textBox13.Text = prestamo.MontoTotal.ToString("N2");
+                        textBox11.Text = (prestamo.MontoTotal / prestamo.PlazoMeses).ToString("N2");
+                    }
+
                     textBox2.Text = Sesion.NombreCompleto;
                     textBox4.Text = Sesion.Correo;
                     textBox6.Text = cliente.Sueldo.ToString("N2"); 
                     textBox3.Text = cliente.Direccion;
                     textBox5.Text = cliente.Telefono;
                     textBox7.Text = cliente.Garantia;
-                    textBox8.Text = prestamo.Monto.ToString("N2"); 
-                    textBox10.Text = prestamo.PlazoMeses.ToString();
-                    textBox12.Text = prestamo.Interes.ToString("N2"); 
-                    textBox13.Text = prestamo.MontoTotal.ToString("N2"); 
-                    textBox11.Text = (prestamo.MontoTotal / prestamo.PlazoMeses).ToString("N2");
                     cuota.NumeroCuota = cuota.NumeroCuota + 1;
                     textBox14.Text = cuota.NumeroCuota.ToString();
-                    textBox16.Text = (prestamo.MontoTotal/prestamo.PlazoMeses).ToString("N2");
+
 
                 }
                 else
@@ -114,6 +134,7 @@ namespace Formulario_Pago
             else 
             {
                 pago.MontoAbonado = Convert.ToDecimal(textBox15.Text);
+
             }
 
             pago.Mora = false;

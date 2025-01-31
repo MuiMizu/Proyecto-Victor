@@ -82,5 +82,15 @@ namespace ClassLibrary1
         {
             return clienteDAL.RegistrarPago(prestamo, pago);
         }
+
+        public bool CargarAbonos(Prestamo prestamo, Pago pago)
+        {
+            return clienteDAL.CargarAbonos(prestamo, pago);
+        }
+
+        public bool CargarUltimoMonto(Prestamo prestamo, Pago pago)
+        {
+            return clienteDAL.CargarUltimoMonto(prestamo, pago);
+        }
     }
 }
