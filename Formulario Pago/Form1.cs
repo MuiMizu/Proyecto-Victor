@@ -74,6 +74,8 @@ namespace Formulario_Pago
                         recalculo.Monto = Convert.ToDecimal(textBox8.Text);
                         recalculo.Interes = Convert.ToDecimal(textBox12.Text);
                         recalculo.Total = Convert.ToDecimal(textBox13.Text);
+                        clienteBLL.RegistrarAbono(prestamo, recalculo);
+
 
                     }
                     else
@@ -159,17 +161,6 @@ namespace Formulario_Pago
             {
                 pago.MontoAbonado = Convert.ToDecimal(textBox15.Text);
 
-                bool resultadoS = clienteBLL.RegistrarAbono(prestamo, recalculo);
-
-                if (resultadoS)
-                {
-                    MessageBox.Show("Abono registrado correctamente.");
-                }
-                else
-                {
-                    MessageBox.Show("Error al registrar el abono.");
-                }
-
             }
 
             pago.Mora = false;
@@ -179,6 +170,7 @@ namespace Formulario_Pago
             if (resultado)
             {
                 MessageBox.Show("Pago registrado correctamente.");
+
             }
             else
             {
@@ -188,6 +180,20 @@ namespace Formulario_Pago
             decimal montoCuota = Convert.ToDecimal(textBox16.Text);
             fondo.MontoDisponible = fondo.MontoDisponible + montoCuota;
             clienteBLL.ActualizarFondoDisponible(fondo.MontoDisponible);
+            textBox8.Text = " ";
+            textBox16.Text = " ";
+            textBox10.Text = " ";
+            textBox12.Text = " ";
+            textBox13.Text = " ";
+            textBox11.Text = " ";
+            textBox2.Text = " ";
+            textBox4.Text = " ";
+            textBox6.Text = " ";
+            textBox3.Text = " ";
+            textBox5.Text = " ";
+            textBox7.Text = " ";
+            textBox14.Text = " ";
+            textBox15.Text = " ";
 
         }
     }
