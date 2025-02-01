@@ -346,13 +346,13 @@ namespace Modelo
                 return false;
             }
         }
-        public bool CargarUltimoMonto(Prestamo prestamo, Pago pago)
+        public bool CargarMontos(Prestamo prestamo, Pago pago)
         {
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    string query = @"SELECT TOP 1 MontoRestante  
+                    string query = @"SELECT TOP 1 MontoPagado, MontoRestante, MontoAbonado  
                                     FROM Pagos pa 
                                     JOIN Prestamos p ON pa.PrestamoID = p.PrestamoID 
                                     WHERE p.PrestamoID = @PrestamoID
@@ -366,48 +366,14 @@ namespace Modelo
                     if (reader.Read())
                     {
                         pago.MontoRestante = Convert.ToDecimal(reader["MontoRestante"]);
-
+                        pago.MontoPagado = Convert.ToDecimal(reader["MontoPagado"]);
+                        pago.MontoAbonado = Convert.ToDecimal(reader["MontoAbonado"]);
                         return true;
                     }
                     else
                     {
                         pago.MontoRestante = prestamo.Monto;
-                        return true;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                return false;
-            }
-        }
-
-        public bool CargarAbonos(Prestamo prestamo, Pago pago)
-        {
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    string query = @"SELECT TOP 1 MontoAbonado 
-                                    FROM Pagos pa 
-                                    JOIN Prestamos p ON pa.PrestamoID = p.PrestamoID 
-                                    WHERE p.PrestamoID = @PrestamoID
-                                    ORDER BY PagoID DESC;";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@PrestamoID", prestamo.PrestamoID);
-
-                    connection.Open();
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    if (reader.Read())
-                    {
-                        pago.MontoAbonado = Convert.ToDecimal(reader["MontoAbonado"]);
-
-                        return true;
-                    }
-                    else
-                    {
+                        pago.MontoPagado = 0;
                         pago.MontoAbonado = 0;
                         return true;
                     }
@@ -419,6 +385,7 @@ namespace Modelo
                 return false;
             }
         }
+
 
         public bool CargarAbonoTotal(Prestamo prestamo, Pago pago)
         {
@@ -507,6 +474,40 @@ namespace Modelo
                     }
                     else
                     {
+                        return true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+
+        public bool CargarMoras(Prestamo prestamo)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string query = @"SELECT COUNT(Mora) AS Moras
+                                    FROM Pagos
+                                    WHERE PrestamoID = @PrestamoID AND Mora = 1;;";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@PrestamoID", prestamo.PrestamoID);
+
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        prestamo.Moras = (int)reader["Moras"];
+                        return true;
+                    }
+                    else
+                    {
+                        prestamo.Moras = 0;
                         return true;
                     }
                 }

@@ -49,15 +49,16 @@ namespace Formulario_Pago
 
                 bool datosCargados = clienteBLL.CargarDatosPago(prestamo, cliente);
                 bool DatosCargados2 = clienteBLL.CargarCuotas(prestamo, cuota);
-                bool datosCargados3 = clienteBLL.CargarAbonos(prestamo, pago);
-                bool datosCargados4 = clienteBLL.CargarUltimoMonto(prestamo, pago);
+                bool DatosCargados3 = clienteBLL.CargarMoras(prestamo);
+                bool datosCargados4 = clienteBLL.CargarMontos(prestamo, pago);
                 bool datosCargados5 = clienteBLL.CargarAbonoTotal(prestamo, pago);
 
 
-                if (datosCargados && DatosCargados2 && datosCargados3 && datosCargados4 && datosCargados5)
+
+                if (datosCargados && DatosCargados2 && DatosCargados3 && datosCargados4 && datosCargados5)
                 {
 
-                    if (pago.MontoAbonado > 0)
+                    if (pago.MontoAbonado > 0 || pago.MontoPagado == 0)
                     {
 
                         textBox8.Text = pago.MontoRestante.ToString("N2");
@@ -80,7 +81,7 @@ namespace Formulario_Pago
                     }
                     else
                     {
-                        if (pago.AbonoTotal > 0)
+                        if (pago.AbonoTotal > 0 || prestamo.Moras > 0)
                         {
                             clienteBLL.CargarRecalculo(prestamo, recalculo);
                             textBox8.Text = recalculo.Monto.ToString("N2");
@@ -102,6 +103,7 @@ namespace Formulario_Pago
                             textBox13.Text = prestamo.MontoTotal.ToString("N2");
                             textBox11.Text = (prestamo.MontoTotal / prestamo.PlazoMeses).ToString("N2");
                         }
+                        
 
                     }
 
@@ -131,28 +133,54 @@ namespace Formulario_Pago
             }
 
         }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
+            pago.MontoPagado = 0;
+            pago.InteresPagado = 0;
+            pago.Mora = true;
+            bool resultado = clienteBLL.RegistrarPago(prestamo, pago);
 
-        }
+            if (resultado)
+            {
+                MessageBox.Show("Retraso registrado correctamente.");
 
-        private void textBox14_TextChanged(object sender, EventArgs e)
-        {
+            }
+            else
+            {
+                MessageBox.Show("Error al retrasar el pago.");
+            }
+            textBox8.Text = " ";
+            textBox16.Text = " ";
+            textBox10.Text = " ";
+            textBox12.Text = " ";
+            textBox13.Text = " ";
+            textBox11.Text = " ";
+            textBox2.Text = " ";
+            textBox4.Text = " ";
+            textBox6.Text = " ";
+            textBox3.Text = " ";
+            textBox5.Text = " ";
+            textBox7.Text = " ";
+            textBox14.Text = " ";
+            textBox15.Text = " ";
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
 
-
-
+            decimal InteresRetraso = 0;
             decimal a = Convert.ToDecimal(textBox12.Text);
             decimal  b = Convert.ToDecimal(textBox10.Text);
+            if (pago.MontoPagado == 0)
+            {
 
+                decimal Monto = Convert.ToDecimal(textBox8.Text);
+                InteresRetraso = Monto * (10m / 100m);
+
+            }
             pago.MontoPagado = Convert.ToDecimal(textBox16.Text) - (a/b);
-            pago.InteresPagado = a / b;
+            pago.InteresPagado = (a / b) + InteresRetraso;
             if (string.IsNullOrWhiteSpace(textBox15.Text))
             {
                 pago.MontoAbonado = 0;
@@ -196,5 +224,6 @@ namespace Formulario_Pago
             textBox15.Text = " ";
 
         }
+
     }
 }

@@ -83,14 +83,9 @@ namespace ClassLibrary1
             return clienteDAL.RegistrarPago(prestamo, pago);
         }
 
-        public bool CargarAbonos(Prestamo prestamo, Pago pago)
+        public bool CargarMontos(Prestamo prestamo, Pago pago)
         {
-            return clienteDAL.CargarAbonos(prestamo, pago);
-        }
-
-        public bool CargarUltimoMonto(Prestamo prestamo, Pago pago)
-        {
-            return clienteDAL.CargarUltimoMonto(prestamo, pago);
+            return clienteDAL.CargarMontos(prestamo, pago);
         }
 
         public bool CargarAbonoTotal(Prestamo prestamo, Pago pago)
@@ -107,5 +102,11 @@ namespace ClassLibrary1
         {
             return clienteDAL.CargarRecalculo(prestamo, recalculo);
         }
+
+        public bool CargarMoras(Prestamo prestamo)
+        {
+            return clienteDAL.CargarMoras(prestamo);
+        }
+
     }
 }
