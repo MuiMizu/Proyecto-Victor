@@ -168,60 +168,70 @@ namespace Formulario_Pago
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-            decimal InteresRetraso = 0;
-            decimal a = Convert.ToDecimal(textBox12.Text);
-            decimal  b = Convert.ToDecimal(textBox10.Text);
-            if (pago.MontoPagado == 0)
+            try
             {
+                decimal InteresRetraso = 0;
+                decimal a = Convert.ToDecimal(textBox12.Text);
+                decimal b = Convert.ToDecimal(textBox10.Text);
+                if (pago.MontoPagado == 0)
+                {
 
-                decimal Monto = Convert.ToDecimal(textBox8.Text);
-                InteresRetraso = Monto * (10m / 100m);
+                    decimal Monto = Convert.ToDecimal(textBox8.Text);
+                    InteresRetraso = Monto * (10m / 100m);
 
+                }
+                pago.MontoPagado = Convert.ToDecimal(textBox16.Text) - (a / b);
+                pago.InteresPagado = (a / b) + InteresRetraso;
+                if (string.IsNullOrWhiteSpace(textBox15.Text))
+                {
+                    pago.MontoAbonado = 0;
+                }
+                else
+                {
+                    pago.MontoAbonado = Convert.ToDecimal(textBox15.Text);
+
+                }
+
+                pago.Mora = false;
+
+                bool resultado = clienteBLL.RegistrarPago(prestamo, pago);
+
+                if (resultado)
+                {
+                    MessageBox.Show("Pago registrado correctamente.");
+
+                }
+                else
+                {
+                    MessageBox.Show("Error al registrar el pago.");
+                }
+
+                decimal montoCuota = Convert.ToDecimal(textBox16.Text);
+                fondo.MontoDisponible = fondo.MontoDisponible + montoCuota;
+                clienteBLL.ActualizarFondoDisponible(fondo.MontoDisponible);
+                textBox8.Text = " ";
+                textBox16.Text = " ";
+                textBox10.Text = " ";
+                textBox12.Text = " ";
+                textBox13.Text = " ";
+                textBox11.Text = " ";
+                textBox2.Text = " ";
+                textBox4.Text = " ";
+                textBox6.Text = " ";
+                textBox3.Text = " ";
+                textBox5.Text = " ";
+                textBox7.Text = " ";
+                textBox14.Text = " ";
+                textBox15.Text = " ";
             }
-            pago.MontoPagado = Convert.ToDecimal(textBox16.Text) - (a/b);
-            pago.InteresPagado = (a / b) + InteresRetraso;
-            if (string.IsNullOrWhiteSpace(textBox15.Text))
+            catch (FormatException ex)
             {
-                pago.MontoAbonado = 0;
+                MessageBox.Show("Error de formato en uno o más campos. Verifique los valores ingresados.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else 
+            catch (Exception ex)
             {
-                pago.MontoAbonado = Convert.ToDecimal(textBox15.Text);
-
+                MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            pago.Mora = false;
-
-            bool resultado = clienteBLL.RegistrarPago(prestamo, pago);
-
-            if (resultado)
-            {
-                MessageBox.Show("Pago registrado correctamente.");
-
-            }
-            else
-            {
-                MessageBox.Show("Error al registrar el pago.");
-            }
-
-            decimal montoCuota = Convert.ToDecimal(textBox16.Text);
-            fondo.MontoDisponible = fondo.MontoDisponible + montoCuota;
-            clienteBLL.ActualizarFondoDisponible(fondo.MontoDisponible);
-            textBox8.Text = " ";
-            textBox16.Text = " ";
-            textBox10.Text = " ";
-            textBox12.Text = " ";
-            textBox13.Text = " ";
-            textBox11.Text = " ";
-            textBox2.Text = " ";
-            textBox4.Text = " ";
-            textBox6.Text = " ";
-            textBox3.Text = " ";
-            textBox5.Text = " ";
-            textBox7.Text = " ";
-            textBox14.Text = " ";
-            textBox15.Text = " ";
 
         }
 

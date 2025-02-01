@@ -518,6 +518,40 @@ namespace Modelo
                 return false;
             }
         }
+
+        public DataTable ObtenerPagos(Prestamo prestamo)
+        {
+            DataTable dtClientes = new DataTable();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string query = @"SELECT MontoAnterior, InteresPagado, MontoAbonado, MontoPagado, MontoRestante,
+                            CASE 
+                                WHEN Mora = 1 THEN 'Retrasado'
+                                ELSE 'Pagado'
+                            END AS EstadoPago
+                            FROM Pagos
+                            WHERE PrestamoID = @PrestamoID;";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@PrestamoID", prestamo.PrestamoID);
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command)) 
+                        {
+                            adapter.Fill(dtClientes);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener pagos: " + ex.Message);
+            }
+            return dtClientes;
+        }
+
     }
 
 }

@@ -193,6 +193,19 @@
   <ItemGroup>
     <None Include="Resources\lapi1.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search-alt-2-regular-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary1\Controlador.csproj">
+      <Project>{6ea1509b-e4d2-4bdc-915d-79f6bde4c7ba}</Project>
+      <Name>Controlador</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ClassLibrary2\Entidades.csproj">
+      <Project>{63b34e30-504c-4385-bb2c-b19bd79ebb84}</Project>
+      <Name>Entidades</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.5.2.0\build\net462\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.5.2.0\build\net462\Microsoft.Data.SqlClient.SNI.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

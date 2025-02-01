@@ -40,7 +40,7 @@
             this.panelContenedor.Location = new System.Drawing.Point(169, 47);
             this.panelContenedor.Margin = new System.Windows.Forms.Padding(4);
             this.panelContenedor.Name = "panelContenedor";
-            this.panelContenedor.Size = new System.Drawing.Size(1224, 982);
+            this.panelContenedor.Size = new System.Drawing.Size(1461, 982);
             this.panelContenedor.TabIndex = 3;
             // 
             // button3
@@ -102,7 +102,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1406, 1055);
+            this.ClientSize = new System.Drawing.Size(1643, 1055);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -107,6 +108,9 @@ namespace ClassLibrary1
         {
             return clienteDAL.CargarMoras(prestamo);
         }
-
+        public DataTable MostrarPagos(Prestamo prestamo)
+        {
+            return clienteDAL.ObtenerPagos(prestamo);
+        }
     }
 }
