@@ -113,6 +113,7 @@
             this.button5.TabIndex = 7;
             this.button5.Text = "Reporte";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Visible = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // Form1
@@ -129,6 +130,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
         }
