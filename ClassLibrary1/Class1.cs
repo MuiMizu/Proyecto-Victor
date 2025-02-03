@@ -112,5 +112,9 @@ namespace ClassLibrary1
         {
             return clienteDAL.ObtenerPagos(prestamo);
         }
+        public DataTable ObtenerReporte()
+        {
+            return clienteDAL.ObtenerReporte();
+        }
     }
 }

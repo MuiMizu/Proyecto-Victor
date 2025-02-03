@@ -552,6 +552,27 @@ namespace Modelo
             return dtClientes;
         }
 
+        public DataTable ObtenerReporte()
+        {
+            try
+            {  
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    con.Open();
+
+                    string query = "SELECT * FROM VistaClientesMorosos"; 
+
+                    SqlDataAdapter da = new SqlDataAdapter(query, con);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    return dt;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener datos desde la vista: " + ex.Message);
+            }
+        }
     }
 
 }

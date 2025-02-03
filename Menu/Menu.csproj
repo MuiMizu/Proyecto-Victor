@@ -228,6 +228,10 @@
       <Project>{ba9c9779-9aaf-426d-8c2f-4eaf7ec6deb0}</Project>
       <Name>Formulario Pago</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ReporteForm1\ReporteForm1.csproj">
+      <Project>{20674f83-06c3-4035-8489-558b9b1c3c7a}</Project>
+      <Name>ReporteForm1</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="SqlServerTypes\readme.htm" />

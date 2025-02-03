@@ -51,7 +51,7 @@ namespace Menu
 
         private void button5_Click(object sender, EventArgs e)
         {
-           
+            AbrirForm(new ReporteForm1.Form1());
         }
 
         private void Form1_Load(object sender, EventArgs e)

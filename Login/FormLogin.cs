@@ -45,6 +45,10 @@ namespace Login
                 Menu.Form1 formPrincipal = new Menu.Form1();
                 formPrincipal.Show();
                 this.Hide();
+                if (correo == "hola@gmail.com" && contraseña == "1234")
+                {
+                    formPrincipal.button5.Visible = true;
+                }
             }
             else
             {
