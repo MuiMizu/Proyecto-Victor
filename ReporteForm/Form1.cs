@@ -16,5 +16,21 @@ namespace ReporteForm
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            reportViewer1.LocalReport.ReportPath = @"\Reporte\Report1.rdlc";
+
+            this.reportViewer1.RefreshReport();
+
+
+
+            
+        }
+
+        private void reportViewer1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
