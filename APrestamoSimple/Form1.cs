@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Reporting.WinForms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,6 +24,46 @@ namespace APrestamoSimple
             this.amortizacionPrestamosTableAdapter.Fill(this.sistemaPrestamosDataSet.AmortizacionPrestamos);
 
             this.reportViewer1.RefreshReport();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (int.TryParse(textBox1.Text, out int prestamoID))
+            {
+
+                SistemaPrestamosDataSetTableAdapters.AmortizacionPrestamosTableAdapter adapter =
+                    new SistemaPrestamosDataSetTableAdapters.AmortizacionPrestamosTableAdapter();
+
+
+                SistemaPrestamosDataSet.AmortizacionPrestamosDataTable table =
+                    new SistemaPrestamosDataSet.AmortizacionPrestamosDataTable();
+
+                table = adapter.GetDataBy(prestamoID);
+
+
+                if (table.Rows.Count > 0)
+                {
+
+                    ReportDataSource MyNewDataSource = new ReportDataSource("DataSet1", (DataTable)table);
+
+
+                    this.reportViewer1.LocalReport.DataSources.Clear();
+
+
+                    this.reportViewer1.LocalReport.DataSources.Add(MyNewDataSource);
+
+                    this.reportViewer1.LocalReport.Refresh();
+                    this.reportViewer1.RefreshReport();
+                }
+                else
+                {
+                    MessageBox.Show("No se encontraron resultados para el PrestamoID ingresado.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Ingrese un número de prestamo válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

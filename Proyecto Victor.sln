@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReporteCMorosos", "ReporteC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MorasXClientes", "MorasXClientes\MorasXClientes.csproj", "{1DD00430-79A6-4ABD-849E-8F2719C5CB80}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatosUsuario", "DatosUsuario\DatosUsuario.csproj", "{1D90AB15-8E50-49D8-9935-D2D7ACB8FAA7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -101,6 +103,10 @@ Global
 		{1DD00430-79A6-4ABD-849E-8F2719C5CB80}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1DD00430-79A6-4ABD-849E-8F2719C5CB80}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1DD00430-79A6-4ABD-849E-8F2719C5CB80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D90AB15-8E50-49D8-9935-D2D7ACB8FAA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D90AB15-8E50-49D8-9935-D2D7ACB8FAA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D90AB15-8E50-49D8-9935-D2D7ACB8FAA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D90AB15-8E50-49D8-9935-D2D7ACB8FAA7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -120,6 +126,7 @@ Global
 		{F82419C8-7DB1-4274-8AD5-F2FDBD17C784} = {F72A4841-B4B6-4E72-BAD1-AED8FCC0F676}
 		{36BB5271-454B-4595-B99C-3665E03DC993} = {F72A4841-B4B6-4E72-BAD1-AED8FCC0F676}
 		{1DD00430-79A6-4ABD-849E-8F2719C5CB80} = {F72A4841-B4B6-4E72-BAD1-AED8FCC0F676}
+		{1D90AB15-8E50-49D8-9935-D2D7ACB8FAA7} = {F72A4841-B4B6-4E72-BAD1-AED8FCC0F676}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E9238FC0-9D1C-4ABC-AC1F-B7437D9691D7}

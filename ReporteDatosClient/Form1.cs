@@ -63,13 +63,13 @@ namespace ReporteDatosClient
                 SistemaPrestamosDataSet.DatosClienteDataTable table =
                     new SistemaPrestamosDataSet.DatosClienteDataTable();
 
-                adapter.BuscarClienteID(table, clienteID);
+                table = adapter.GetDataBy1(clienteID);
 
 
                 if (table.Rows.Count > 0)
                 {
   
-                    ReportDataSource MyNewDataSource = new ReportDataSource("DatosCliente", (DataTable)table);
+                    ReportDataSource MyNewDataSource = new ReportDataSource("DataSet1", (DataTable)table);
 
 
                     this.reportViewer1.LocalReport.DataSources.Clear();

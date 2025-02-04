@@ -30,35 +30,36 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.sistemaPrestamosDataSet = new MorasXClientes.SistemaPrestamosDataSet();
             this.vistaClientesMorasBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sistemaPrestamosDataSet = new MorasXClientes.SistemaPrestamosDataSet();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.vistaClientesMorasTableAdapter = new MorasXClientes.SistemaPrestamosDataSetTableAdapters.VistaClientesMorasTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaPrestamosDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vistaClientesMorasBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sistemaPrestamosDataSet)).BeginInit();
             this.SuspendLayout();
             // 
-            // reportViewer1
+            // vistaClientesMorasBindingSource
             // 
-            reportDataSource1.Name = "DataSet1";
-            reportDataSource1.Value = this.vistaClientesMorasBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "MorasXClientes.Report1.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(5, 6);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(783, 432);
-            this.reportViewer1.TabIndex = 0;
+            this.vistaClientesMorasBindingSource.DataMember = "VistaClientesMoras";
+            this.vistaClientesMorasBindingSource.DataSource = this.sistemaPrestamosDataSet;
             // 
             // sistemaPrestamosDataSet
             // 
             this.sistemaPrestamosDataSet.DataSetName = "SistemaPrestamosDataSet";
             this.sistemaPrestamosDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // vistaClientesMorasBindingSource
+            // reportViewer1
             // 
-            this.vistaClientesMorasBindingSource.DataMember = "VistaClientesMoras";
-            this.vistaClientesMorasBindingSource.DataSource = this.sistemaPrestamosDataSet;
+            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            reportDataSource1.Name = "DataSet1";
+            reportDataSource1.Value = this.vistaClientesMorasBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "MorasXClientes.Report1.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(1054, 527);
+            this.reportViewer1.TabIndex = 0;
             // 
             // vistaClientesMorasTableAdapter
             // 
@@ -68,13 +69,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1054, 527);
             this.Controls.Add(this.reportViewer1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaPrestamosDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vistaClientesMorasBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sistemaPrestamosDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }

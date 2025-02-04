@@ -30,42 +30,43 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.sistemaPrestamosDataSet = new ReporteCMorosos.SistemaPrestamosDataSet();
-            this.sistemaPrestamosDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.vistaClientesMorososBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sistemaPrestamosDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sistemaPrestamosDataSet = new ReporteCMorosos.SistemaPrestamosDataSet();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.vistaClientesMorososTableAdapter = new ReporteCMorosos.SistemaPrestamosDataSetTableAdapters.VistaClientesMorososTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaPrestamosDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaPrestamosDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vistaClientesMorososBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sistemaPrestamosDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sistemaPrestamosDataSet)).BeginInit();
             this.SuspendLayout();
             // 
-            // reportViewer1
+            // vistaClientesMorososBindingSource
             // 
-            reportDataSource1.Name = "DataSet1";
-            reportDataSource1.Value = this.vistaClientesMorososBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "ReporteCMorosos.Report1.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(1, 1);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(1281, 512);
-            this.reportViewer1.TabIndex = 0;
-            // 
-            // sistemaPrestamosDataSet
-            // 
-            this.sistemaPrestamosDataSet.DataSetName = "SistemaPrestamosDataSet";
-            this.sistemaPrestamosDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.vistaClientesMorososBindingSource.DataMember = "VistaClientesMorosos";
+            this.vistaClientesMorososBindingSource.DataSource = this.sistemaPrestamosDataSetBindingSource;
             // 
             // sistemaPrestamosDataSetBindingSource
             // 
             this.sistemaPrestamosDataSetBindingSource.DataSource = this.sistemaPrestamosDataSet;
             this.sistemaPrestamosDataSetBindingSource.Position = 0;
             // 
-            // vistaClientesMorososBindingSource
+            // sistemaPrestamosDataSet
             // 
-            this.vistaClientesMorososBindingSource.DataMember = "VistaClientesMorosos";
-            this.vistaClientesMorososBindingSource.DataSource = this.sistemaPrestamosDataSetBindingSource;
+            this.sistemaPrestamosDataSet.DataSetName = "SistemaPrestamosDataSet";
+            this.sistemaPrestamosDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // reportViewer1
+            // 
+            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            reportDataSource1.Name = "DataSet1";
+            reportDataSource1.Value = this.vistaClientesMorososBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "ReporteCMorosos.Report1.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(1446, 572);
+            this.reportViewer1.TabIndex = 0;
             // 
             // vistaClientesMorososTableAdapter
             // 
@@ -75,14 +76,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1281, 515);
+            this.ClientSize = new System.Drawing.Size(1446, 572);
             this.Controls.Add(this.reportViewer1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaPrestamosDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaPrestamosDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vistaClientesMorososBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sistemaPrestamosDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sistemaPrestamosDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }

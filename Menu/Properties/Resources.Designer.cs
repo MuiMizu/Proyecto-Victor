@@ -83,9 +83,69 @@ namespace Menu.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap male_regular_24 {
+            get {
+                object obj = ResourceManager.GetObject("male-regular-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap menu_regular_24 {
             get {
                 object obj = ResourceManager.GetObject("menu-regular-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap profile {
+            get {
+                object obj = ResourceManager.GetObject("profile", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap profile_circle_icon_256x256_cm91gqm2 {
+            get {
+                object obj = ResourceManager.GetObject("profile-circle-icon-256x256-cm91gqm2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap profile_circle_icon_256x256_cm91gqm21 {
+            get {
+                object obj = ResourceManager.GetObject("profile-circle-icon-256x256-cm91gqm21", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap profile1 {
+            get {
+                object obj = ResourceManager.GetObject("profile1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap profile2 {
+            get {
+                object obj = ResourceManager.GetObject("profile2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
