@@ -220,6 +220,14 @@
       <Project>{15dd8911-5ed0-4026-a588-cfbb528e7316}</Project>
       <Name>Amortizacion</Name>
     </ProjectReference>
+    <ProjectReference Include="..\APrestamoSimple\APrestamoSimple.csproj">
+      <Project>{59674389-2d00-4740-a679-08af4d8cd79b}</Project>
+      <Name>APrestamoSimple</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ClassLibrary2\Entidades.csproj">
+      <Project>{63b34e30-504c-4385-bb2c-b19bd79ebb84}</Project>
+      <Name>Entidades</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Factura\Factura.csproj">
       <Project>{93feb069-527e-4c3a-bcc2-23ffc64c1a50}</Project>
       <Name>Factura</Name>
@@ -228,9 +236,21 @@
       <Project>{ba9c9779-9aaf-426d-8c2f-4eaf7ec6deb0}</Project>
       <Name>Formulario Pago</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ReporteForm1\ReporteForm1.csproj">
-      <Project>{20674f83-06c3-4035-8489-558b9b1c3c7a}</Project>
-      <Name>ReporteForm1</Name>
+    <ProjectReference Include="..\GananciaxInteres\GananciaxInteres.csproj">
+      <Project>{f82419c8-7db1-4274-8ad5-f2fdbd17c784}</Project>
+      <Name>GananciaxInteres</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MorasXClientes\MorasXClientes.csproj">
+      <Project>{1dd00430-79a6-4abd-849e-8f2719c5cb80}</Project>
+      <Name>MorasXClientes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ReporteCMorosos\ReporteCMorosos.csproj">
+      <Project>{36bb5271-454b-4595-b99c-3665e03dc993}</Project>
+      <Name>ReporteCMorosos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ReporteDatosClient\ReporteDatosClient.csproj">
+      <Project>{4ea3f7cb-4074-4d8f-b80f-6b2b942a09b6}</Project>
+      <Name>ReporteDatosClient</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

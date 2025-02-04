@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ReporteDatosClient;
 namespace Menu
 {
     public partial class Form1 : Form
@@ -51,12 +52,33 @@ namespace Menu
 
         private void button5_Click(object sender, EventArgs e)
         {
-            AbrirForm(new ReporteForm1.Form1());
+            AbrirForm(new ReporteCMorosos.Form1());
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            AbrirForm(new ReporteDatosClient.Form1());
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            AbrirForm(new APrestamoSimple.Form1());
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            AbrirForm(new GananciaxInteres.Form1());
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            AbrirForm(new MorasXClientes.Form1()); 
         }
     }
 }

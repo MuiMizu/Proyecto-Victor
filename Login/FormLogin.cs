@@ -48,6 +48,10 @@ namespace Login
                 if (correo == "hola@gmail.com" && contraseña == "1234")
                 {
                     formPrincipal.button5.Visible = true;
+                    formPrincipal.button6.Visible = true;
+                    formPrincipal.button7.Visible = true;
+                    formPrincipal.button8.Visible = true;
+                    formPrincipal.button9.Visible = true;
                 }
             }
             else

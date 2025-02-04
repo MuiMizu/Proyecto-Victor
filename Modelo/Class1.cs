@@ -573,6 +573,29 @@ namespace Modelo
                 throw new Exception("Error al obtener datos desde la vista: " + ex.Message);
             }
         }
+
+        public DataTable ObtenerReporte2()
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    con.Open();
+
+                    string query = "SELECT * FROM DatosCliente";
+
+                    SqlDataAdapter da = new SqlDataAdapter(query, con);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    return dt;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener datos desde la vista: " + ex.Message);
+            }
+        }
+
     }
 
 }

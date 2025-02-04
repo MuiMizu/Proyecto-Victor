@@ -77,6 +77,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SistemaPrestamosDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="SistemaPrestamosDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaPrestamosDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SistemaPrestamosDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaPrestamosDataSet2.xsd</DependentUpon>
+    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -112,6 +122,28 @@
     <None Include="SistemaPrestamosDataSet.xss">
       <DependentUpon>SistemaPrestamosDataSet.xsd</DependentUpon>
     </None>
+    <None Include="SistemaPrestamosDataSet1.xsc">
+      <DependentUpon>SistemaPrestamosDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaPrestamosDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaPrestamosDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaPrestamosDataSet1.xss">
+      <DependentUpon>SistemaPrestamosDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaPrestamosDataSet2.xsc">
+      <DependentUpon>SistemaPrestamosDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaPrestamosDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaPrestamosDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaPrestamosDataSet2.xss">
+      <DependentUpon>SistemaPrestamosDataSet2.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -135,6 +167,14 @@
     <ProjectReference Include="..\ClassLibrary1\Controlador.csproj">
       <Project>{6ea1509b-e4d2-4bdc-915d-79f6bde4c7ba}</Project>
       <Name>Controlador</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ClassLibrary2\Entidades.csproj">
+      <Project>{63b34e30-504c-4385-bb2c-b19bd79ebb84}</Project>
+      <Name>Entidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modelo\Modelo.csproj">
+      <Project>{9816baf1-d793-4a25-9e3a-e4753ca7e796}</Project>
+      <Name>Modelo</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

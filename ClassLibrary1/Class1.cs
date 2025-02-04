@@ -116,5 +116,12 @@ namespace ClassLibrary1
         {
             return clienteDAL.ObtenerReporte();
         }
+
+        public DataTable ObtenerReporte2()
+        {
+            return clienteDAL.ObtenerReporte2();
+        }
+
+
     }
 }
