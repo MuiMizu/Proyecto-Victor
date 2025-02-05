@@ -64,9 +64,9 @@
             // 
             this.button10.Image = global::Menu.Properties.Resources.profile_circle_icon_256x256_cm91gqm21;
             this.button10.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button10.Location = new System.Drawing.Point(43, 837);
+            this.button10.Location = new System.Drawing.Point(43, 833);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(93, 73);
+            this.button10.Size = new System.Drawing.Size(93, 77);
             this.button10.TabIndex = 12;
             this.button10.Text = "Perfil";
             this.button10.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
