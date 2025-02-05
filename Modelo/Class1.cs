@@ -27,7 +27,7 @@ namespace Modelo
 
                     command.Parameters.AddWithValue("@NombreCompleto", Sesion.NombreCompleto);
                     command.Parameters.AddWithValue("@Correo", Sesion.Correo);
-                    command.Parameters.AddWithValue("@Contraseña",cliente.Contraseña);
+                    command.Parameters.AddWithValue("@Contraseña", cliente.Contraseña);
 
                     connection.Open();
                     command.ExecuteNonQuery();
@@ -81,7 +81,7 @@ namespace Modelo
                                    "WHERE ClienteID = @ClienteID";
                     SqlCommand command = new SqlCommand(query, connection);
 
- 
+
                     command.Parameters.AddWithValue("@Telefono", cliente.Telefono);
                     command.Parameters.AddWithValue("@Direccion", cliente.Direccion);
                     command.Parameters.AddWithValue("@Garantia", cliente.Garantia);
@@ -90,13 +90,13 @@ namespace Modelo
 
                     connection.Open();
                     command.ExecuteNonQuery();
-                    return true; 
+                    return true;
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return false; 
+                return false;
             }
         }
         public int ValidarCredenciales(string correo, string contraseña)
@@ -108,7 +108,7 @@ namespace Modelo
                     string query = "SELECT ClienteID, NombreCompleto FROM Clientes WHERE Correo = @Correo AND Contraseña = @Contraseña";
                     SqlCommand command = new SqlCommand(query, connection);
                     command.Parameters.AddWithValue("@Correo", correo);
-                    command.Parameters.AddWithValue("@Contraseña", contraseña); 
+                    command.Parameters.AddWithValue("@Contraseña", contraseña);
 
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
@@ -121,8 +121,8 @@ namespace Modelo
                     }
                     else
                     {
-                        return -1; 
-                    } 
+                        return -1;
+                    }
                 }
             }
             catch (Exception ex)
@@ -211,7 +211,7 @@ namespace Modelo
 
                     if (result != null)
                     {
-                        prestamo.PrestamoID = Convert.ToInt32(result); 
+                        prestamo.PrestamoID = Convert.ToInt32(result);
                         return true;
                     }
                     else
@@ -221,7 +221,7 @@ namespace Modelo
                 }
 
             }
-            
+
             catch (Exception ex)
             {
                 Console.WriteLine("Error al registrar el préstamo: " + ex.Message);
@@ -230,7 +230,7 @@ namespace Modelo
 
         }
 
-        public bool CargarDatosPago (Prestamo prestamo, Cliente cliente)
+        public bool CargarDatosPago(Prestamo prestamo, Cliente cliente)
         {
             try
             {
@@ -285,7 +285,7 @@ namespace Modelo
             }
         }
 
-        public bool CargarCuotas (Prestamo prestamo,Cuota cuota)
+        public bool CargarCuotas(Prestamo prestamo, Cuota cuota)
         {
             try
             {
@@ -301,7 +301,7 @@ namespace Modelo
                     if (reader.Read())
                     {
                         cuota.NumeroCuota = Convert.ToInt32(reader["PagosHechos"]);
-                        
+
                         return true;
                     }
                     else
@@ -408,7 +408,7 @@ namespace Modelo
                     }
                     else
                     {
-                        pago.AbonoTotal = 0; 
+                        pago.AbonoTotal = 0;
                         return true;
                     }
                 }
@@ -447,7 +447,7 @@ namespace Modelo
                 return false;
             }
         }
-        public bool CargarRecalculo (Prestamo prestamo, Recalculo recalculo)
+        public bool CargarRecalculo(Prestamo prestamo, Recalculo recalculo)
         {
             try
             {
@@ -538,7 +538,7 @@ namespace Modelo
                     {
                         command.Parameters.AddWithValue("@PrestamoID", prestamo.PrestamoID);
 
-                        using (SqlDataAdapter adapter = new SqlDataAdapter(command)) 
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                         {
                             adapter.Fill(dtClientes);
                         }
@@ -555,12 +555,12 @@ namespace Modelo
         public DataTable ObtenerReporte()
         {
             try
-            {  
+            {
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
                     con.Open();
 
-                    string query = "SELECT * FROM VistaClientesMorosos"; 
+                    string query = "SELECT * FROM VistaClientesMorosos";
 
                     SqlDataAdapter da = new SqlDataAdapter(query, con);
                     DataTable dt = new DataTable();
@@ -595,7 +595,67 @@ namespace Modelo
                 throw new Exception("Error al obtener datos desde la vista: " + ex.Message);
             }
         }
+        public bool ObtenerClientePorID(Cliente cliente)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "SELECT * FROM Clientes WHERE ClienteID = @ClienteID";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@ClienteID", Sesion.ClienteId);
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    Sesion.NombreCompleto = reader["NombreCompleto"].ToString();
+                    cliente.Telefono = reader["Telefono"] != DBNull.Value ? reader["Telefono"].ToString() : "Realiza un prestamo para rellenar el campo";
+                    cliente.Garantia = reader["Garantia"] != DBNull.Value ? reader["Garantia"].ToString() : "Realiza un prestamo para rellenar el campo";
+                    cliente.Direccion = reader["Direccion"] != DBNull.Value ? reader["Direccion"].ToString() : "Realiza un prestamo para rellenar el campo";
+                    cliente.Contraseña = reader["Contraseña"].ToString();
+                    Sesion.Correo = reader["Correo"].ToString();
+                    cliente.Sueldo = reader["Sueldo"] != DBNull.Value ? (decimal)reader["Sueldo"] : 0.00m;
+                    return true;
+
+                }
+                else
+                {
+                    return false;
+                }
+
+            }
+
+        }
+
+
+        public bool ActualizarCliente(Cliente cliente)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string query = @"UPDATE Clientes  SET NombreCompleto = @NombreCompleto, Correo = @Correo, Telefono = @Telefono, Direccion = @Direccion, Garantia = @Garantia, Sueldo = @Sueldo, Contraseña = @Contraseña  WHERE ClienteID = @ClienteID";
+                    SqlCommand command = new SqlCommand(query, connection);
+
+                    command.Parameters.AddWithValue("@NombreCompleto", string.IsNullOrWhiteSpace(Sesion.NombreCompleto) ? DBNull.Value : (object)Sesion.NombreCompleto);
+                    command.Parameters.AddWithValue("@Correo", string.IsNullOrWhiteSpace(Sesion.Correo) ? DBNull.Value : (object)Sesion.Correo);
+                    command.Parameters.AddWithValue("@Telefono", string.IsNullOrWhiteSpace(cliente.Telefono) ? DBNull.Value : (object)cliente.Telefono);
+                    command.Parameters.AddWithValue("@Direccion", string.IsNullOrWhiteSpace(cliente.Direccion) ? DBNull.Value : (object)cliente.Direccion);
+                    command.Parameters.AddWithValue("@Garantia", string.IsNullOrWhiteSpace(cliente.Garantia) ? DBNull.Value : (object)cliente.Garantia);
+                    command.Parameters.AddWithValue("@Sueldo", cliente.Sueldo != 0.00m ? (object)cliente.Sueldo : DBNull.Value);
+                    command.Parameters.AddWithValue("@Contraseña", string.IsNullOrWhiteSpace(cliente.Contraseña) ? DBNull.Value : (object)cliente.Contraseña);
+                    command.Parameters.AddWithValue("@ClienteID", Sesion.ClienteId);
+
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al registrar el pago: " + ex.Message);
+                return false;
+            }
+        }
 
     }
-
 }

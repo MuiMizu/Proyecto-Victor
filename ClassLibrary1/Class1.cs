@@ -122,6 +122,14 @@ namespace ClassLibrary1
             return clienteDAL.ObtenerReporte2();
         }
 
+        public bool ObtenerClienteID(Cliente cliente)
+        {
+            return clienteDAL.ObtenerClientePorID(cliente);
+        }
 
+        public bool ActualizarCliente(Cliente cliente)
+        {
+            return clienteDAL.ActualizarCliente(cliente);
+        }
     }
 }

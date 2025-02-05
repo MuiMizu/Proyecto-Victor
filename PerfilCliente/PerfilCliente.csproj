@@ -69,5 +69,15 @@
   <ItemGroup>
     <None Include="Resources\Flecha.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary1\Controlador.csproj">
+      <Project>{6ea1509b-e4d2-4bdc-915d-79f6bde4c7ba}</Project>
+      <Name>Controlador</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ClassLibrary2\Entidades.csproj">
+      <Project>{63b34e30-504c-4385-bb2c-b19bd79ebb84}</Project>
+      <Name>Entidades</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

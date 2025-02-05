@@ -80,5 +80,10 @@ namespace Menu
         {
             AbrirForm(new MorasXClientes.Form1()); 
         }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            AbrirForm(new PerfilCliente.Perfil());
+        }
     }
 }

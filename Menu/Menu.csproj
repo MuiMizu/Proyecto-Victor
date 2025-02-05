@@ -244,6 +244,10 @@
       <Project>{1dd00430-79a6-4abd-849e-8f2719c5cb80}</Project>
       <Name>MorasXClientes</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PerfilCliente\PerfilCliente.csproj">
+      <Project>{0b108c9c-12ac-4c63-8739-2da5636fbb4b}</Project>
+      <Name>PerfilCliente</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ReporteCMorosos\ReporteCMorosos.csproj">
       <Project>{36bb5271-454b-4595-b99c-3665e03dc993}</Project>
       <Name>ReporteCMorosos</Name>
