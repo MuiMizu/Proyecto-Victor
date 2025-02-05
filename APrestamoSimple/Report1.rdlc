@@ -6,33 +6,36 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1.65833in</Width>
+              <Width>1.64166in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.28095in</Height>
+              <Height>0.29524in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox7">
+                    <Textbox Name="Textbox20">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>M. Abonado</Value>
+                              <Value>Total Monto Abonado</Value>
                               <Style>
-                                <FontWeight>Normal</FontWeight>
+                                <FontWeight>Bold</FontWeight>
                                 <Color>#333333</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox7</rd:DefaultName>
+                      <rd:DefaultName>Textbox20</rd:DefaultName>
+                      <ZIndex>6</ZIndex>
                       <Style>
                         <Border>
                           <Style>None</Style>
@@ -49,7 +52,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.28095in</Height>
+              <Height>0.29524in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -67,10 +70,13 @@
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>MontoAbonado</rd:DefaultName>
+                      <ZIndex>12</ZIndex>
                       <Style>
                         <Border>
                           <Style>None</Style>
@@ -102,7 +108,7 @@
                 </SortExpression>
               </SortExpressions>
               <TablixHeader>
-                <Size>0.28095in</Size>
+                <Size>0.29524in</Size>
                 <CellContents>
                   <Textbox Name="Textbox1">
                     <CanGrow>true</CanGrow>
@@ -113,12 +119,14 @@
                           <TextRun>
                             <Value>PrestamoID</Value>
                             <Style>
-                              <FontWeight>Normal</FontWeight>
+                              <FontWeight>Bold</FontWeight>
                               <Color>#333333</Color>
                             </Style>
                           </TextRun>
                         </TextRuns>
-                        <Style />
+                        <Style>
+                          <TextAlign>Center</TextAlign>
+                        </Style>
                       </Paragraph>
                     </Paragraphs>
                     <rd:DefaultName>Textbox1</rd:DefaultName>
@@ -143,7 +151,7 @@
               <TablixMembers>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>0.28095in</Size>
+                    <Size>0.29524in</Size>
                     <CellContents>
                       <Textbox Name="PrestamoID">
                         <CanGrow>true</CanGrow>
@@ -159,7 +167,9 @@
                                 </Style>
                               </TextRun>
                             </TextRuns>
-                            <Style />
+                            <Style>
+                              <TextAlign>Center</TextAlign>
+                            </Style>
                           </Paragraph>
                         </Paragraphs>
                         <rd:DefaultName>PrestamoID</rd:DefaultName>
@@ -194,9 +204,9 @@
                         </SortExpression>
                       </SortExpressions>
                       <TablixHeader>
-                        <Size>0.28095in</Size>
+                        <Size>0.29524in</Size>
                         <CellContents>
-                          <Textbox Name="Textbox2">
+                          <Textbox Name="Textbox10">
                             <CanGrow>true</CanGrow>
                             <KeepTogether>true</KeepTogether>
                             <Paragraphs>
@@ -205,15 +215,18 @@
                                   <TextRun>
                                     <Value>Monto Anterior</Value>
                                     <Style>
-                                      <FontWeight>Normal</FontWeight>
+                                      <FontWeight>Bold</FontWeight>
                                       <Color>#333333</Color>
                                     </Style>
                                   </TextRun>
                                 </TextRuns>
-                                <Style />
+                                <Style>
+                                  <TextAlign>Center</TextAlign>
+                                </Style>
                               </Paragraph>
                             </Paragraphs>
-                            <rd:DefaultName>Textbox2</rd:DefaultName>
+                            <rd:DefaultName>Textbox10</rd:DefaultName>
+                            <ZIndex>1</ZIndex>
                             <Style>
                               <Border>
                                 <Style>None</Style>
@@ -235,7 +248,7 @@
                       <TablixMembers>
                         <TablixMember>
                           <TablixHeader>
-                            <Size>0.28095in</Size>
+                            <Size>0.29524in</Size>
                             <CellContents>
                               <Textbox Name="MontoAnterior">
                                 <CanGrow>true</CanGrow>
@@ -251,10 +264,13 @@
                                         </Style>
                                       </TextRun>
                                     </TextRuns>
-                                    <Style />
+                                    <Style>
+                                      <TextAlign>Center</TextAlign>
+                                    </Style>
                                   </Paragraph>
                                 </Paragraphs>
                                 <rd:DefaultName>MontoAnterior</rd:DefaultName>
+                                <ZIndex>7</ZIndex>
                                 <Style>
                                   <Border>
                                     <Style>None</Style>
@@ -286,9 +302,9 @@
                                 </SortExpression>
                               </SortExpressions>
                               <TablixHeader>
-                                <Size>0.28095in</Size>
+                                <Size>0.29524in</Size>
                                 <CellContents>
-                                  <Textbox Name="Textbox3">
+                                  <Textbox Name="Textbox12">
                                     <CanGrow>true</CanGrow>
                                     <KeepTogether>true</KeepTogether>
                                     <Paragraphs>
@@ -297,15 +313,18 @@
                                           <TextRun>
                                             <Value>Interes Pagado</Value>
                                             <Style>
-                                              <FontWeight>Normal</FontWeight>
+                                              <FontWeight>Bold</FontWeight>
                                               <Color>#333333</Color>
                                             </Style>
                                           </TextRun>
                                         </TextRuns>
-                                        <Style />
+                                        <Style>
+                                          <TextAlign>Center</TextAlign>
+                                        </Style>
                                       </Paragraph>
                                     </Paragraphs>
-                                    <rd:DefaultName>Textbox3</rd:DefaultName>
+                                    <rd:DefaultName>Textbox12</rd:DefaultName>
+                                    <ZIndex>2</ZIndex>
                                     <Style>
                                       <Border>
                                         <Style>None</Style>
@@ -327,7 +346,7 @@
                               <TablixMembers>
                                 <TablixMember>
                                   <TablixHeader>
-                                    <Size>0.28095in</Size>
+                                    <Size>0.29524in</Size>
                                     <CellContents>
                                       <Textbox Name="InteresPagado">
                                         <CanGrow>true</CanGrow>
@@ -343,10 +362,13 @@
                                                 </Style>
                                               </TextRun>
                                             </TextRuns>
-                                            <Style />
+                                            <Style>
+                                              <TextAlign>Center</TextAlign>
+                                            </Style>
                                           </Paragraph>
                                         </Paragraphs>
                                         <rd:DefaultName>InteresPagado</rd:DefaultName>
+                                        <ZIndex>8</ZIndex>
                                         <Style>
                                           <Border>
                                             <Style>None</Style>
@@ -378,27 +400,29 @@
                                         </SortExpression>
                                       </SortExpressions>
                                       <TablixHeader>
-                                        <Size>0.28095in</Size>
+                                        <Size>0.29524in</Size>
                                         <CellContents>
-                                          <Textbox Name="Textbox4">
+                                          <Textbox Name="Textbox14">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>Monto Pagado
-</Value>
+                                                    <Value>Monto Pagado</Value>
                                                     <Style>
-                                                      <FontWeight>Normal</FontWeight>
+                                                      <FontWeight>Bold</FontWeight>
                                                       <Color>#333333</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
-                                                <Style />
+                                                <Style>
+                                                  <TextAlign>Center</TextAlign>
+                                                </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox4</rd:DefaultName>
+                                            <rd:DefaultName>Textbox14</rd:DefaultName>
+                                            <ZIndex>3</ZIndex>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -420,7 +444,7 @@
                                       <TablixMembers>
                                         <TablixMember>
                                           <TablixHeader>
-                                            <Size>0.28095in</Size>
+                                            <Size>0.29524in</Size>
                                             <CellContents>
                                               <Textbox Name="MontoPagado">
                                                 <CanGrow>true</CanGrow>
@@ -436,10 +460,13 @@
                                                         </Style>
                                                       </TextRun>
                                                     </TextRuns>
-                                                    <Style />
+                                                    <Style>
+                                                      <TextAlign>Center</TextAlign>
+                                                    </Style>
                                                   </Paragraph>
                                                 </Paragraphs>
                                                 <rd:DefaultName>MontoPagado</rd:DefaultName>
+                                                <ZIndex>9</ZIndex>
                                                 <Style>
                                                   <Border>
                                                     <Style>None</Style>
@@ -471,9 +498,9 @@
                                                 </SortExpression>
                                               </SortExpressions>
                                               <TablixHeader>
-                                                <Size>0.28095in</Size>
+                                                <Size>0.29524in</Size>
                                                 <CellContents>
-                                                  <Textbox Name="Textbox5">
+                                                  <Textbox Name="Textbox16">
                                                     <CanGrow>true</CanGrow>
                                                     <KeepTogether>true</KeepTogether>
                                                     <Paragraphs>
@@ -482,15 +509,18 @@
                                                           <TextRun>
                                                             <Value>Monto Restante</Value>
                                                             <Style>
-                                                              <FontWeight>Normal</FontWeight>
+                                                              <FontWeight>Bold</FontWeight>
                                                               <Color>#333333</Color>
                                                             </Style>
                                                           </TextRun>
                                                         </TextRuns>
-                                                        <Style />
+                                                        <Style>
+                                                          <TextAlign>Center</TextAlign>
+                                                        </Style>
                                                       </Paragraph>
                                                     </Paragraphs>
-                                                    <rd:DefaultName>Textbox5</rd:DefaultName>
+                                                    <rd:DefaultName>Textbox16</rd:DefaultName>
+                                                    <ZIndex>4</ZIndex>
                                                     <Style>
                                                       <Border>
                                                         <Style>None</Style>
@@ -512,7 +542,7 @@
                                               <TablixMembers>
                                                 <TablixMember>
                                                   <TablixHeader>
-                                                    <Size>0.28095in</Size>
+                                                    <Size>0.29524in</Size>
                                                     <CellContents>
                                                       <Textbox Name="MontoRestante">
                                                         <CanGrow>true</CanGrow>
@@ -528,10 +558,13 @@
                                                                 </Style>
                                                               </TextRun>
                                                             </TextRuns>
-                                                            <Style />
+                                                            <Style>
+                                                              <TextAlign>Center</TextAlign>
+                                                            </Style>
                                                           </Paragraph>
                                                         </Paragraphs>
                                                         <rd:DefaultName>MontoRestante</rd:DefaultName>
+                                                        <ZIndex>10</ZIndex>
                                                         <Style>
                                                           <Border>
                                                             <Style>None</Style>
@@ -563,9 +596,9 @@
                                                         </SortExpression>
                                                       </SortExpressions>
                                                       <TablixHeader>
-                                                        <Size>0.28095in</Size>
+                                                        <Size>0.29524in</Size>
                                                         <CellContents>
-                                                          <Textbox Name="Textbox6">
+                                                          <Textbox Name="Textbox18">
                                                             <CanGrow>true</CanGrow>
                                                             <KeepTogether>true</KeepTogether>
                                                             <Paragraphs>
@@ -574,15 +607,18 @@
                                                                   <TextRun>
                                                                     <Value>Estado Pago</Value>
                                                                     <Style>
-                                                                      <FontWeight>Normal</FontWeight>
+                                                                      <FontWeight>Bold</FontWeight>
                                                                       <Color>#333333</Color>
                                                                     </Style>
                                                                   </TextRun>
                                                                 </TextRuns>
-                                                                <Style />
+                                                                <Style>
+                                                                  <TextAlign>Center</TextAlign>
+                                                                </Style>
                                                               </Paragraph>
                                                             </Paragraphs>
-                                                            <rd:DefaultName>Textbox6</rd:DefaultName>
+                                                            <rd:DefaultName>Textbox18</rd:DefaultName>
+                                                            <ZIndex>5</ZIndex>
                                                             <Style>
                                                               <Border>
                                                                 <Style>None</Style>
@@ -604,7 +640,7 @@
                                                       <TablixMembers>
                                                         <TablixMember>
                                                           <TablixHeader>
-                                                            <Size>0.28095in</Size>
+                                                            <Size>0.29524in</Size>
                                                             <CellContents>
                                                               <Textbox Name="EstadoPago">
                                                                 <CanGrow>true</CanGrow>
@@ -620,10 +656,13 @@
                                                                         </Style>
                                                                       </TextRun>
                                                                     </TextRuns>
-                                                                    <Style />
+                                                                    <Style>
+                                                                      <TextAlign>Center</TextAlign>
+                                                                    </Style>
                                                                   </Paragraph>
                                                                 </Paragraphs>
                                                                 <rd:DefaultName>EstadoPago</rd:DefaultName>
+                                                                <ZIndex>11</ZIndex>
                                                                 <Style>
                                                                   <Border>
                                                                     <Style>None</Style>
@@ -697,10 +736,10 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
-        <Top>0.25in</Top>
-        <Left>2.48333in</Left>
-        <Height>3.93333in</Height>
-        <Width>1.65833in</Width>
+        <Top>0.06944in</Top>
+        <Left>2.83333in</Left>
+        <Height>4.1333in</Height>
+        <Width>1.64166in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -708,11 +747,62 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>4.70833in</Height>
-    <Style />
+    <Height>4.35833in</Height>
+    <Style>
+      <Border>
+        <Style>Solid</Style>
+        <Width>2pt</Width>
+      </Border>
+      <BackgroundColor>WhiteSmoke</BackgroundColor>
+    </Style>
   </Body>
   <Width>7.64167in</Width>
   <Page>
+    <PageHeader>
+      <Height>1in</Height>
+      <PrintOnFirstPage>true</PrintOnFirstPage>
+      <PrintOnLastPage>true</PrintOnLastPage>
+      <ReportItems>
+        <Textbox Name="Textbox23">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Reporte De Amortizacion X Prestamo Simple</Value>
+                  <Style>
+                    <FontSize>16pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox23</rd:DefaultName>
+          <Top>0.33833in</Top>
+          <Left>1.305in</Left>
+          <Height>0.325in</Height>
+          <Width>5.06667in</Width>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+      </ReportItems>
+      <Style>
+        <Border>
+          <Style>None</Style>
+        </Border>
+        <BackgroundColor>LightGrey</BackgroundColor>
+      </Style>
+    </PageHeader>
     <LeftMargin>1in</LeftMargin>
     <RightMargin>1in</RightMargin>
     <TopMargin>1in</TopMargin>

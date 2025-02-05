@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="SistemaPrestamosDataSet1" targetNamespace="http://tempuri.org/SistemaPrestamosDataSet1.xsd" xmlns:mstns="http://tempuri.org/SistemaPrestamosDataSet1.xsd" xmlns="http://tempuri.org/SistemaPrestamosDataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="SistemaPrestamosConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SistemaPrestamosConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.APrestamoSimple.Properties.Settings.GlobalReference.Default.SistemaPrestamosConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="MontoPrestadoYGeneradoTableAdapter" GeneratorDataComponentClassName="MontoPrestadoYGeneradoTableAdapter" Name="MontoPrestadoYGenerado" UserDataComponentName="MontoPrestadoYGeneradoTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SistemaPrestamosConnectionString (Settings)" DbObjectName="SistemaPrestamos.dbo.MontoPrestadoYGenerado" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT DineroPrestado, GananciaIntereseses FROM dbo.MontoPrestadoYGenerado</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="DineroPrestado" DataSetColumn="DineroPrestado" />
+              <Mapping SourceColumn="GananciaIntereseses" DataSetColumn="GananciaIntereseses" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="SistemaPrestamosDataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_UserDSName="SistemaPrestamosDataSet1" msprop:Generator_DataSetName="SistemaPrestamosDataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="MontoPrestadoYGenerado" msprop:Generator_RowEvHandlerName="MontoPrestadoYGeneradoRowChangeEventHandler" msprop:Generator_RowDeletedName="MontoPrestadoYGeneradoRowDeleted" msprop:Generator_RowDeletingName="MontoPrestadoYGeneradoRowDeleting" msprop:Generator_RowEvArgName="MontoPrestadoYGeneradoRowChangeEvent" msprop:Generator_TablePropName="MontoPrestadoYGenerado" msprop:Generator_RowChangedName="MontoPrestadoYGeneradoRowChanged" msprop:Generator_RowChangingName="MontoPrestadoYGeneradoRowChanging" msprop:Generator_TableClassName="MontoPrestadoYGeneradoDataTable" msprop:Generator_RowClassName="MontoPrestadoYGeneradoRow" msprop:Generator_TableVarName="tableMontoPrestadoYGenerado" msprop:Generator_UserTableName="MontoPrestadoYGenerado">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DineroPrestado" msprop:Generator_ColumnPropNameInRow="DineroPrestado" msprop:Generator_ColumnPropNameInTable="DineroPrestadoColumn" msprop:Generator_ColumnVarNameInTable="columnDineroPrestado" msprop:Generator_UserColumnName="DineroPrestado" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GananciaIntereseses" msprop:Generator_ColumnPropNameInRow="GananciaIntereseses" msprop:Generator_ColumnPropNameInTable="GananciaInteresesesColumn" msprop:Generator_ColumnVarNameInTable="columnGananciaIntereseses" msprop:Generator_UserColumnName="GananciaIntereseses" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
